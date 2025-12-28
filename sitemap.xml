@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="https://quangduy05.github.io/my_blog/sitemap.xsl"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+<url>
+<loc>https://quangduy05.github.io/my_blog/</loc>
+</url>
+<url>
+<loc>https://quangduy05.github.io/my_blog/bai-2-cac-kieu-du-lieu-co-ban-trong-java.html</loc>
+<lastmod>2025-12-28T12:39:55+07:00</lastmod>
+</url>
+<url>
+<loc>https://quangduy05.github.io/my_blog/bai-3-cau-truc-dieu-kien-if-else-java.html</loc>
+<lastmod>2025-12-28T12:41:23+07:00</lastmod>
+</url>
+<url>
+<loc>https://quangduy05.github.io/my_blog/bai-4-vong-lap-for-va-ung-dung.html</loc>
+<lastmod>2025-12-28T12:42:16+07:00</lastmod>
+</url>
+<url>
+<loc>https://quangduy05.github.io/my_blog/bai-5-lam-viec-voi-mang-arrays-java.html</loc>
+<lastmod>2025-12-28T12:42:59+07:00</lastmod>
+</url>
+<url>
+<loc>https://quangduy05.github.io/my_blog/bai-6-bien-trong-javascript-let-va-const.html</loc>
+<lastmod>2025-12-28T12:43:46+07:00</lastmod>
+</url>
+<url>
+<loc>https://quangduy05.github.io/my_blog/bai-7-ham-mui-ten-arrow-functions-js.html</loc>
+<lastmod>2025-12-28T12:44:29+07:00</lastmod>
+</url>
+<url>
+<loc>https://quangduy05.github.io/my_blog/bai-8-xu-ly-su-kien-click-trong-js.html</loc>
+<lastmod>2025-12-28T12:45:15+07:00</lastmod>
+</url>
+<url>
+<loc>https://quangduy05.github.io/my_blog/bai-9-suc-manh-cua-python-trong-xu-ly-du-lieu.html</loc>
+<lastmod>2025-12-28T12:46:14+07:00</lastmod>
+</url>
+<url>
+<loc>https://quangduy05.github.io/my_blog/page/2/</loc>
+</url>
+<url>
+<loc>https://quangduy05.github.io/my_blog/phan-1-java.html</loc>
+<lastmod>2025-12-28T12:38:52+07:00</lastmod>
+</url>
+</urlset>

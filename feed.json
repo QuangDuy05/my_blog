@@ -1,0 +1,148 @@
+{
+    "version": "https://jsonfeed.org/version/1",
+    "title": "Blog Lập Trình Mạng - Thiều Quang Duy",
+    "description": "",
+    "home_page_url": "https://quangduy05.github.io/my_blog",
+    "feed_url": "https://quangduy05.github.io/my_blog/feed.json",
+    "user_comment": "",
+    "author": {
+        "name": "Thiều Quang Duy"
+    },
+    "items": [
+        {
+            "id": "https://quangduy05.github.io/my_blog/bai-9-suc-manh-cua-python-trong-xu-ly-du-lieu.html",
+            "url": "https://quangduy05.github.io/my_blog/bai-9-suc-manh-cua-python-trong-xu-ly-du-lieu.html",
+            "title": "BÀI 9: TỔNG KẾT VÀ ƯU ĐIỂM CỦA PYTHON TRONG LẬP TRÌNH",
+            "summary": "Nội dung: Bên cạnh Java và JS, Python là ngôn ngữ mình cực kỳ yêu thích nhờ cú pháp gần&hellip;",
+            "content_html": "<p data-path-to-node=\"48\"><strong data-path-to-node=\"48\" data-index-in-node=\"0\">Nội dung:</strong> Bên cạnh Java và JS, Python là ngôn ngữ mình cực kỳ yêu thích nhờ cú pháp gần giống ngôn ngữ tự nhiên. Python không chỉ mạnh về Web mà còn đứng đầu trong lĩnh vực Trí tuệ nhân tạo (AI) và Tự động hóa. Việc học đa ngôn ngữ giúp mình có cái nhìn tổng quan hơn về tư duy giải thuật.</p>\n<p data-path-to-node=\"49\"><strong data-path-to-node=\"49\" data-index-in-node=\"0\">Code mẫu Python cơ bản:</strong></p>\n<pre class=\"language-python\"><code>def check_skill(language):\n    skills = [\"Java\", \"Python\", \"JavaScript\"]\n    if language in skills:\n        return f\"Duy đã nắm vững {language}\"\n    else:\n        return \"Đang trong quá trình nghiên cứu\"\n\nprint(check_skill(\"Python\"))</code></pre>",
+            "author": {
+                "name": "Thiều Quang Duy"
+            },
+            "tags": [
+                   "Blog"
+            ],
+            "date_published": "2025-12-28T12:34:25+07:00",
+            "date_modified": "2025-12-28T12:46:14+07:00"
+        },
+        {
+            "id": "https://quangduy05.github.io/my_blog/bai-8-xu-ly-su-kien-click-trong-js.html",
+            "url": "https://quangduy05.github.io/my_blog/bai-8-xu-ly-su-kien-click-trong-js.html",
+            "title": "BÀI 8: XỬ LÝ SỰ KIỆN DOM TRONG JAVASCRIPT",
+            "summary": "Nội dung: DOM (Document Object Model) cho phép JavaScript thay đổi nội dung, cấu trúc và định dạng của trang&hellip;",
+            "content_html": "<p data-path-to-node=\"43\"><strong data-path-to-node=\"43\" data-index-in-node=\"0\">Nội dung:</strong> DOM (Document Object Model) cho phép JavaScript thay đổi nội dung, cấu trúc và định dạng của trang web. Xử lý sự kiện (Event Handling) là cách web phản hồi lại hành động của người dùng như Click, Hover, hoặc Submit form.</p>\n<p data-path-to-node=\"44\"><strong data-path-to-node=\"44\" data-index-in-node=\"0\">Code mẫu thay đổi nội dung trang web:</strong></p>\n<pre class=\"language-javascript\"><code>// HTML: &lt;button id=\"btn\"&gt;Click me&lt;/button&gt; &lt;h1 id=\"title\"&gt;Chào HUTECH&lt;/h1&gt;\n\nconst button = document.getElementById('btn');\nconst title = document.getElementById('title');\n\nbutton.addEventListener('click', () =&gt; {\n    title.innerText = \"Bạn đã bấm nút thành công!\";\n    title.style.color = \"blue\";\n});</code></pre>",
+            "author": {
+                "name": "Thiều Quang Duy"
+            },
+            "tags": [
+                   "Blog"
+            ],
+            "date_published": "2025-12-28T12:34:11+07:00",
+            "date_modified": "2025-12-28T12:45:15+07:00"
+        },
+        {
+            "id": "https://quangduy05.github.io/my_blog/bai-7-ham-mui-ten-arrow-functions-js.html",
+            "url": "https://quangduy05.github.io/my_blog/bai-7-ham-mui-ten-arrow-functions-js.html",
+            "title": "BÀI 7: HÀM MŨI TÊN (ARROW FUNCTIONS) TRONG ES6",
+            "summary": "Nội dung: Arrow functions mang lại cú pháp ngắn gọn hơn cho việc viết hàm trong JavaScript. Ngoài việc bớt&hellip;",
+            "content_html": "<p data-path-to-node=\"38\"><strong data-path-to-node=\"38\" data-index-in-node=\"0\">Nội dung:</strong> Arrow functions mang lại cú pháp ngắn gọn hơn cho việc viết hàm trong JavaScript. Ngoài việc bớt chữ <code data-path-to-node=\"38\" data-index-in-node=\"111\">function</code>, nó còn xử lý từ khóa <code data-path-to-node=\"38\" data-index-in-node=\"142\">this</code> một cách thông minh hơn trong các ứng dụng web phức tạp.</p>\n<p data-path-to-node=\"39\"><strong data-path-to-node=\"39\" data-index-in-node=\"0\">Code mẫu:</strong></p>\n<pre class=\"language-javascript\"><code>// Hàm tính diện tích hình chữ nhật\nconst calculateArea = (width, height) =&gt; width * height;\n\nconsole.log(\"Diện tích: \" + calculateArea(5, 10));\n\n// Ví dụ hàm không tham số\nconst sayHello = () =&gt; console.log(\"Chào bạn đã đến với Blog của Duy!\");\nsayHello();</code></pre>",
+            "author": {
+                "name": "Thiều Quang Duy"
+            },
+            "tags": [
+                   "Blog"
+            ],
+            "date_published": "2025-12-28T12:33:59+07:00",
+            "date_modified": "2025-12-28T12:44:29+07:00"
+        },
+        {
+            "id": "https://quangduy05.github.io/my_blog/bai-6-bien-trong-javascript-let-va-const.html",
+            "url": "https://quangduy05.github.io/my_blog/bai-6-bien-trong-javascript-let-va-const.html",
+            "title": "BÀI 6: JAVASCRIPT HIỆN ĐẠI - PHÂN BIỆT VAR, LET VÀ CONST",
+            "summary": "Nội dung: Trước ES6, var là cách duy nhất để khai báo biến nhưng nó gây ra nhiều lỗi do&hellip;",
+            "content_html": "<p data-path-to-node=\"32\"><strong data-path-to-node=\"32\" data-index-in-node=\"0\">Nội dung:</strong> Trước ES6, <code data-path-to-node=\"32\" data-index-in-node=\"21\">var</code> là cách duy nhất để khai báo biến nhưng nó gây ra nhiều lỗi do tính chất hoisting. Ngày nay, <code data-path-to-node=\"32\" data-index-in-node=\"118\">let</code> và <code data-path-to-node=\"32\" data-index-in-node=\"125\">const</code> được khuyến khích sử dụng:</p>\n<ul data-path-to-node=\"33\">\n<li>\n<p data-path-to-node=\"33,0,0\"><strong data-path-to-node=\"33,0,0\" data-index-in-node=\"0\">const:</strong> Dùng cho các giá trị không đổi (hằng số).</p>\n</li>\n<li>\n<p data-path-to-node=\"33,1,0\"><strong data-path-to-node=\"33,1,0\" data-index-in-node=\"0\">let:</strong> Dùng cho biến có thể thay đổi giá trị và có phạm vi trong khối lệnh <code data-path-to-node=\"33,1,0\" data-index-in-node=\"73\">{ }</code> (block scope).</p>\n</li>\n</ul>\n<p data-path-to-node=\"34\"><strong data-path-to-node=\"34\" data-index-in-node=\"0\">Code mẫu:</strong></p>\n<pre class=\"language-javascript\"><code>const PI = 3.14159;\nlet radius = 10;\n\nif (radius &gt; 0) {\n    let area = PI * radius * radius;\n    console.log(\"Diện tích hình tròn là: \" + area);\n}\n// console.log(area); // Lỗi! area không tồn tại ngoài block if</code></pre>",
+            "author": {
+                "name": "Thiều Quang Duy"
+            },
+            "tags": [
+                   "Blog"
+            ],
+            "date_published": "2025-12-28T12:33:48+07:00",
+            "date_modified": "2025-12-28T12:43:46+07:00"
+        },
+        {
+            "id": "https://quangduy05.github.io/my_blog/bai-5-lam-viec-voi-mang-arrays-java.html",
+            "url": "https://quangduy05.github.io/my_blog/bai-5-lam-viec-voi-mang-arrays-java.html",
+            "title": "BÀI 5: QUẢN LÝ DỮ LIỆU VỚI MẢNG (ARRAY)",
+            "summary": "Nội dung: Mảng là một tập hợp các phần tử có cùng kiểu dữ liệu được lưu trữ tại các&hellip;",
+            "content_html": "<p data-path-to-node=\"27\"><strong data-path-to-node=\"27\" data-index-in-node=\"0\">Nội dung:</strong> Mảng là một tập hợp các phần tử có cùng kiểu dữ liệu được lưu trữ tại các vị trí bộ nhớ liên tiếp. Trong Java, mảng là một đối tượng và có kích thước cố định sau khi khởi tạo. Chỉ số (index) của mảng luôn bắt đầu từ 0.</p>\n<p data-path-to-node=\"28\"><strong data-path-to-node=\"28\" data-index-in-node=\"0\">Code mẫu tìm giá trị lớn nhất trong mảng:</strong></p>\n<pre class=\"language-java\"><code>public class ArrayDemo {\n    public static void main(String[] args) {\n        int[] scores = {7, 9, 5, 10, 8};\n        int max = scores[0];\n        \n        for (int i = 1; i &lt; scores.length; i++) {\n            if (scores[i] &gt; max) {\n                max = scores[i];\n            }\n        }\n        System.out.println(\"Điểm cao nhất trong danh sách là: \" + max);\n    }\n}</code></pre>",
+            "author": {
+                "name": "Thiều Quang Duy"
+            },
+            "tags": [
+                   "Blog"
+            ],
+            "date_published": "2025-12-28T12:33:38+07:00",
+            "date_modified": "2025-12-28T12:42:59+07:00"
+        },
+        {
+            "id": "https://quangduy05.github.io/my_blog/bai-4-vong-lap-for-va-ung-dung.html",
+            "url": "https://quangduy05.github.io/my_blog/bai-4-vong-lap-for-va-ung-dung.html",
+            "title": "BÀI 4: VÒNG LẶP FOR, WHILE VÀ DO-WHILE",
+            "summary": "Nội dung: Vòng lặp là giải pháp để thực hiện các công việc lặp đi lặp lại. for thường dùng&hellip;",
+            "content_html": "<p data-path-to-node=\"22\"><strong data-path-to-node=\"22\" data-index-in-node=\"0\">Nội dung:</strong> Vòng lặp là giải pháp để thực hiện các công việc lặp đi lặp lại. <code data-path-to-node=\"22\" data-index-in-node=\"75\">for</code> thường dùng khi biết trước số lần lặp, <code data-path-to-node=\"22\" data-index-in-node=\"118\">while</code> dùng khi lặp dựa trên một điều kiện còn đúng, và <code data-path-to-node=\"22\" data-index-in-node=\"173\">do-while</code> đảm bảo khối lệnh được thực hiện ít nhất một lần trước khi kiểm tra điều kiện.</p>\n<p data-path-to-node=\"23\"><strong data-path-to-node=\"23\" data-index-in-node=\"0\">Code mẫu tính tổng số chẵn:</strong></p>\n<pre class=\"language-java\"><code>public class LoopExample {\n    public static void main(String[] args) {\n        int sum = 0;\n        for (int i = 1; i &lt;= 100; i++) {\n            if (i % 2 == 0) {\n                sum += i;\n            }\n        }\n        System.out.println(\"Tổng các số chẵn từ 1 đến 100 là: \" + sum);\n    }\n}</code></pre>",
+            "author": {
+                "name": "Thiều Quang Duy"
+            },
+            "tags": [
+                   "Blog"
+            ],
+            "date_published": "2025-12-28T12:33:27+07:00",
+            "date_modified": "2025-12-28T12:42:16+07:00"
+        },
+        {
+            "id": "https://quangduy05.github.io/my_blog/bai-3-cau-truc-dieu-kien-if-else-java.html",
+            "url": "https://quangduy05.github.io/my_blog/bai-3-cau-truc-dieu-kien-if-else-java.html",
+            "title": "BÀI 3: CẤU TRÚC ĐIỀU KHIỂN IF-ELSE VÀ SWITCH-CASE",
+            "summary": "Nội dung: Cấu trúc rẽ nhánh cho phép chúng ta kiểm soát luồng thực thi của chương trình. if-else thường&hellip;",
+            "content_html": "<p data-path-to-node=\"17\"><strong data-path-to-node=\"17\" data-index-in-node=\"0\">Nội dung:</strong> Cấu trúc rẽ nhánh cho phép chúng ta kiểm soát luồng thực thi của chương trình. <code data-path-to-node=\"17\" data-index-in-node=\"89\">if-else</code> thường dùng cho các điều kiện so sánh khoảng giá trị, trong khi <code data-path-to-node=\"17\" data-index-in-node=\"161\">switch-case</code> tối ưu hơn khi so sánh một biến với nhiều giá trị hằng số cụ thể.</p>\n<p data-path-to-node=\"18\"><strong data-path-to-node=\"18\" data-index-in-node=\"0\">Code mẫu xếp loại sinh viên:</strong></p>\n<pre class=\"language-java\"><code>public class GradeControl {\n    public static void main(String[] args) {\n        double score = 82.5;\n        if (score &gt;= 90) {\n            System.out.println(\"Xếp loại: Xuất sắc\");\n        } else if (score &gt;= 80) {\n            System.out.println(\"Xếp loại: Giỏi\");\n        } else if (score &gt;= 65) {\n            System.out.println(\"Xếp loại: Khá\");\n        } else {\n            System.out.println(\"Cần cố gắng nhiều hơn!\");\n        }\n    }\n}</code></pre>",
+            "author": {
+                "name": "Thiều Quang Duy"
+            },
+            "tags": [
+                   "Blog"
+            ],
+            "date_published": "2025-12-28T12:33:15+07:00",
+            "date_modified": "2025-12-28T12:41:23+07:00"
+        },
+        {
+            "id": "https://quangduy05.github.io/my_blog/bai-2-cac-kieu-du-lieu-co-ban-trong-java.html",
+            "url": "https://quangduy05.github.io/my_blog/bai-2-cac-kieu-du-lieu-co-ban-trong-java.html",
+            "title": "BÀI 2: HỆ THỐNG CÁC KIỂU DỮ LIỆU TRONG JAVA",
+            "summary": "Nội dung: Trong Java, kiểu dữ liệu được chia làm hai loại chính: Kiểu nguyên thủy (Primitive) và Kiểu tham&hellip;",
+            "content_html": "<p data-path-to-node=\"11\"><strong data-path-to-node=\"11\" data-index-in-node=\"0\">Nội dung:</strong> Trong Java, kiểu dữ liệu được chia làm hai loại chính: Kiểu nguyên thủy (Primitive) và Kiểu tham chiếu (Reference). Việc chọn đúng kiểu dữ liệu giúp chương trình chạy nhanh hơn và tiết kiệm bộ nhớ RAM.</p>\n<ul data-path-to-node=\"12\">\n<li>\n<p data-path-to-node=\"12,0,0\"><strong data-path-to-node=\"12,0,0\" data-index-in-node=\"0\">Kiểu số nguyên:</strong> <code data-path-to-node=\"12,0,0\" data-index-in-node=\"16\">byte</code>, <code data-path-to-node=\"12,0,0\" data-index-in-node=\"22\">short</code>, <code data-path-to-node=\"12,0,0\" data-index-in-node=\"29\">int</code>, <code data-path-to-node=\"12,0,0\" data-index-in-node=\"34\">long</code>.</p>\n</li>\n<li>\n<p data-path-to-node=\"12,1,0\"><strong data-path-to-node=\"12,1,0\" data-index-in-node=\"0\">Kiểu số thực:</strong> <code data-path-to-node=\"12,1,0\" data-index-in-node=\"14\">float</code>, <code data-path-to-node=\"12,1,0\" data-index-in-node=\"21\">double</code>.</p>\n</li>\n<li>\n<p data-path-to-node=\"12,2,0\"><strong data-path-to-node=\"12,2,0\" data-index-in-node=\"0\">Kiểu ký tự và logic:</strong> <code data-path-to-node=\"12,2,0\" data-index-in-node=\"21\">char</code>, <code data-path-to-node=\"12,2,0\" data-index-in-node=\"27\">boolean</code>.</p>\n</li>\n<li>\n<p data-path-to-node=\"12,3,0\"><strong data-path-to-node=\"12,3,0\" data-index-in-node=\"0\">Kiểu tham chiếu:</strong> <code data-path-to-node=\"12,3,0\" data-index-in-node=\"17\">String</code>, <code data-path-to-node=\"12,3,0\" data-index-in-node=\"25\">Array</code>, <code data-path-to-node=\"12,3,0\" data-index-in-node=\"32\">Object</code>.</p>\n</li>\n</ul>\n<p data-path-to-node=\"13\"><strong data-path-to-node=\"13\" data-index-in-node=\"0\">Code mẫu minh họa:</strong></p>\n<pre class=\"language-java\"><code>public class DataStyles {\n    public static void main(String[] args) {\n        String studentName = \"Thiều Quang Duy\";\n        int age = 20;\n        double mathScore = 8.5;\n        boolean isPassed = true;\n\n        System.out.println(\"Thông tin sinh viên: \" + studentName);\n        System.out.println(\"Điểm toán: \" + mathScore + \" - Trạng thái: \" + (isPassed ? \"Đạt\" : \"Trượt\"));\n    }\n}</code></pre>",
+            "author": {
+                "name": "Thiều Quang Duy"
+            },
+            "tags": [
+                   "Blog"
+            ],
+            "date_published": "2025-12-28T12:33:01+07:00",
+            "date_modified": "2025-12-28T12:39:55+07:00"
+        },
+        {
+            "id": "https://quangduy05.github.io/my_blog/phan-1-java.html",
+            "url": "https://quangduy05.github.io/my_blog/phan-1-java.html",
+            "title": "BÀI 1: TỔNG QUAN VỀ JAVA VÀ CÀI ĐẶT MÔI TRƯỜNG",
+            "summary": "Nội dung: Java là một trong những ngôn ngữ lập trình phổ biến nhất thế giới, được phát triển bởi&hellip;",
+            "content_html": "<p data-path-to-node=\"4\"> </p>\n<ul data-path-to-node=\"5\">\n<li>\n<p data-path-to-node=\"4\"><strong data-path-to-node=\"4\" data-index-in-node=\"0\">Nội dung:</strong> Java là một trong những ngôn ngữ lập trình phổ biến nhất thế giới, được phát triển bởi Sun Microsystems (nay thuộc Oracle). Với triết lý \"Write Once, Run Anywhere\", mã nguồn Java sau khi biên dịch thành bytecode có thể chạy trên bất kỳ thiết bị nào có cài đặt Java Virtual Machine (JVM). Đối với sinh viên HUTECH, Java là nền tảng quan trọng để tiếp cận lập trình hướng đối tượng (OOP).</p>\n<p data-path-to-node=\"5\"><strong data-path-to-node=\"5\" data-index-in-node=\"0\">Các bước thực thi một chương trình Java:</strong></p>\n<ol start=\"1\" data-path-to-node=\"6\">\n<li>\n<p data-path-to-node=\"6,0,0\">Viết mã nguồn trong file <code data-path-to-node=\"6,0,0\" data-index-in-node=\"25\">.java</code>.</p>\n</li>\n<li>\n<p data-path-to-node=\"6,1,0\">Biên dịch bằng <code data-path-to-node=\"6,1,0\" data-index-in-node=\"15\">javac</code> thành file <code data-path-to-node=\"6,1,0\" data-index-in-node=\"32\">.class</code> (bytecode).</p>\n</li>\n<li>\n<p data-path-to-node=\"6,2,0\">Chạy chương trình thông qua JVM.</p>\n</li>\n</ol>\n<p data-path-to-node=\"7\"><strong data-path-to-node=\"7\" data-index-in-node=\"0\">Code mẫu Hello World:</strong></p>\n</li>\n<li>\n<pre class=\"language-java\"><code>public class HelloWorld {\n    public static void main(String[] args) {\n        // In ra màn hình lời chào mừng\n        System.out.println(\"Chào mừng thầy đến với Blog của Duy HUTECH!\");\n        System.out.println(\"Phiên bản Java đang sử dụng: 17 LTS\");\n    }\n}</code></pre>\n</li>\n</ul>",
+            "author": {
+                "name": "Thiều Quang Duy"
+            },
+            "tags": [
+                   "Blog"
+            ],
+            "date_published": "2025-12-28T12:29:56+07:00",
+            "date_modified": "2025-12-28T12:38:52+07:00"
+        }
+    ]
+}
