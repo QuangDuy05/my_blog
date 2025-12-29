@@ -3,12 +3,267 @@
     <title>Rinz</title>
     <link href="https://quangduy05.github.io/my_blog/feed.xml" rel="self" />
     <link href="https://quangduy05.github.io/my_blog" />
-    <updated>2025-12-30T01:26:41+07:00</updated>
+    <updated>2025-12-30T01:33:52+07:00</updated>
     <author>
         <name>Thiều Quang Duy</name>
     </author>
     <id>https://quangduy05.github.io/my_blog</id>
 
+    <entry>
+        <title>Window Functions trong SQL - Phân tích dữ liệu nâng cao</title>
+        <author>
+            <name>Thiều Quang Duy</name>
+        </author>
+        <link href="https://quangduy05.github.io/my_blog/window-functions-trong-sql-phan-tich-du-lieu-nang-cao.html"/>
+        <id>https://quangduy05.github.io/my_blog/window-functions-trong-sql-phan-tich-du-lieu-nang-cao.html</id>
+            <category term="SQL"/>
+
+        <updated>2025-12-30T01:33:52+07:00</updated>
+            <summary type="html">
+                <![CDATA[
+                    Window Functions trong SQL - Phân tích dữ liệu nâng cao Window Functions (ROW_NUMBER, RANK, SUM OVER) giúp phân tích dữ liệu mà không cần group by, rất hữu ích cho báo cáo bãi xe. SELECT bien_so, thoi_gian_vao, thoi_gian_ra, RANK() OVER (ORDER BY (thoi_gian_ra -&hellip;
+                ]]>
+            </summary>
+        <content type="html">
+            <![CDATA[
+                <h1 style="color: #0f172a; font-size: 2.8rem; margin-bottom: 30px; text-align: center;">Window Functions trong SQL - Phân tích dữ liệu nâng cao</h1>
+<p style="line-height: 1.8; font-size: 1.2rem; color: #475569; max-width: 900px; margin: 0 auto 40px; text-align: center;">Window Functions (ROW_NUMBER, RANK, SUM OVER) giúp phân tích dữ liệu mà không cần group by, rất hữu ích cho báo cáo bãi xe.</p>
+<h3 style="color: #2563eb; font-size: 1.8rem; margin: 50px 0 20px;">1. Xếp hạng xe đỗ lâu nhất (RANK)</h3>
+<div style="max-width: 950px; margin: 0 auto 40px; background: #f8fafc; border-radius: 16px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.08);">
+<pre style="padding: 30px; margin: 0; font-family: 'Consolas', monospace; font-size: 1.05rem; line-height: 1.7; background: #ffffff; overflow-x: auto;">SELECT 
+    bien_so,
+    thoi_gian_vao,
+    thoi_gian_ra,
+    RANK() OVER (ORDER BY (thoi_gian_ra - thoi_gian_vao) DESC) AS xep_hang
+FROM Ve
+WHERE thoi_gian_ra IS NOT NULL;
+  </pre>
+</div>
+<h3 style="color: #2563eb; font-size: 1.8rem; margin: 50px 0 20px;">2. Tính tổng doanh thu theo ngày (SUM OVER)</h3>
+<div style="max-width: 950px; margin: 0 auto 40px; background: #f8fafc; border-radius: 16px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.08);">
+<pre style="padding: 30px; margin: 0; font-family: 'Consolas', monospace; font-size: 1.05rem; line-height: 1.7; background: #ffffff; overflow-x: auto;">SELECT 
+    ngay,
+    doanh_thu,
+    SUM(doanh_thu) OVER (ORDER BY ngay) AS tong_doanh_thu_tich_luy
+FROM BaoCaoDoanhThu;
+  </pre>
+</div>
+<p style="margin-top: 50px; text-align: center; font-style: italic; color: #64748b;">Window Functions giúp báo cáo linh hoạt mà không cần subquery phức tạp.</p>
+            ]]>
+        </content>
+    </entry>
+    <entry>
+        <title>Tối ưu hóa truy vấn SQL - Index và Query Tuning</title>
+        <author>
+            <name>Thiều Quang Duy</name>
+        </author>
+        <link href="https://quangduy05.github.io/my_blog/toi-uu-hoa-truy-van-sql-index-va-query-tuning.html"/>
+        <id>https://quangduy05.github.io/my_blog/toi-uu-hoa-truy-van-sql-index-va-query-tuning.html</id>
+            <category term="SQL"/>
+
+        <updated>2025-12-30T01:33:25+07:00</updated>
+            <summary type="html">
+                <![CDATA[
+                    Tối ưu hóa truy vấn SQL - Index và Query Tuning Khi database lớn (hàng triệu bản ghi), truy vấn chậm là vấn đề lớn. Index và tối ưu hóa query giúp tăng tốc đáng kể. CREATE INDEX idx_bien_so ON Xe(bien_so); CREATE INDEX idx_thoi_gian_vao ON&hellip;
+                ]]>
+            </summary>
+        <content type="html">
+            <![CDATA[
+                <h1 style="color: #0f172a; font-size: 2.8rem; margin-bottom: 30px; text-align: center;">Tối ưu hóa truy vấn SQL - Index và Query Tuning</h1>
+<p style="line-height: 1.8; font-size: 1.2rem; color: #475569; max-width: 900px; margin: 0 auto 40px; text-align: center;">Khi database lớn (hàng triệu bản ghi), truy vấn chậm là vấn đề lớn. Index và tối ưu hóa query giúp tăng tốc đáng kể.</p>
+<h3 style="color: #2563eb; font-size: 1.8rem; margin: 50px 0 20px;">1. Tạo Index cho cột thường xuyên tìm kiếm</h3>
+<div style="max-width: 950px; margin: 0 auto 40px; background: #f8fafc; border-radius: 16px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.08);">
+<pre style="padding: 30px; margin: 0; font-family: 'Consolas', monospace; font-size: 1.05rem; line-height: 1.7; background: #ffffff; overflow-x: auto;">CREATE INDEX idx_bien_so ON Xe(bien_so);
+CREATE INDEX idx_thoi_gian_vao ON Ve(thoi_gian_vao);
+  </pre>
+</div>
+<h3 style="color: #2563eb; font-size: 1.8rem; margin: 50px 0 20px;">2. Sử dụng EXPLAIN để phân tích query</h3>
+<div style="max-width: 950px; margin: 0 auto 40px; background: #f8fafc; border-radius: 16px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.08);">
+<pre style="padding: 30px; margin: 0; font-family: 'Consolas', monospace; font-size: 1.05rem; line-height: 1.7; background: #ffffff; overflow-x: auto;">EXPLAIN SELECT * FROM Xe WHERE bien_so = '59A1-12345';
+  </pre>
+</div>
+<p style="margin-top: 50px; text-align: center; font-style: italic; color: #64748b;">Áp dụng index đúng cách có thể tăng tốc query từ vài giây xuống mili giây!</p>
+            ]]>
+        </content>
+    </entry>
+    <entry>
+        <title>Truy vấn SQL nâng cao - JOIN và Subquery trong quản lý dữ liệu bãi xe</title>
+        <author>
+            <name>Thiều Quang Duy</name>
+        </author>
+        <link href="https://quangduy05.github.io/my_blog/truy-van-sql-nang-cao-join-va-subquery-trong-quan-ly-du-lieu-bai-xe.html"/>
+        <id>https://quangduy05.github.io/my_blog/truy-van-sql-nang-cao-join-va-subquery-trong-quan-ly-du-lieu-bai-xe.html</id>
+            <category term="SQL"/>
+
+        <updated>2025-12-30T01:32:56+07:00</updated>
+            <summary type="html">
+                <![CDATA[
+                    Truy vấn SQL nâng cao - JOIN và Subquery Trong hệ thống quản lý bãi xe, chúng ta cần kết hợp dữ liệu từ nhiều bảng (xe vào/ra, vé, khách hàng) để tạo báo cáo. JOIN và Subquery là hai kỹ thuật mạnh mẽ giúp&hellip;
+                ]]>
+            </summary>
+        <content type="html">
+            <![CDATA[
+                <h1 style="color: #0f172a; font-size: 2.8rem; margin-bottom: 30px; text-align: center;">Truy vấn SQL nâng cao - JOIN và Subquery</h1>
+<p style="line-height: 1.8; font-size: 1.2rem; color: #475569; max-width: 900px; margin: 0 auto 40px; text-align: center;">Trong hệ thống quản lý bãi xe, chúng ta cần kết hợp dữ liệu từ nhiều bảng (xe vào/ra, vé, khách hàng) để tạo báo cáo. JOIN và Subquery là hai kỹ thuật mạnh mẽ giúp xử lý điều này hiệu quả.</p>
+<h3 style="color: #2563eb; font-size: 1.8rem; margin: 50px 0 20px;">1. INNER JOIN - Kết hợp bảng Xe và Vé</h3>
+<p style="line-height: 1.8; font-size: 1.2rem; color: #475569;">Lấy danh sách xe đã vào bãi và vé tương ứng.</p>
+<div style="max-width: 950px; margin: 0 auto 40px; background: #f8fafc; border-radius: 16px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.08);">
+<pre style="padding: 30px; margin: 0; font-family: 'Consolas', monospace; font-size: 1.05rem; line-height: 1.7; background: #ffffff; overflow-x: auto;">SELECT x.bien_so, v.thoi_gian_vao, v.thoi_gian_ra
+FROM Xe x
+INNER JOIN Ve v ON x.id = v.xe_id
+WHERE v.thoi_gian_ra IS NOT NULL;
+  </pre>
+</div>
+<h3 style="color: #2563eb; font-size: 1.8rem; margin: 50px 0 20px;">2. Subquery - Tìm xe đỗ lâu nhất</h3>
+<p style="line-height: 1.8; font-size: 1.2rem; color: #475569;">Sử dụng Subquery để tìm xe có thời gian đỗ lâu nhất.</p>
+<div style="max-width: 950px; margin: 0 auto 40px; background: #f8fafc; border-radius: 16px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.08);">
+<pre style="padding: 30px; margin: 0; font-family: 'Consolas', monospace; font-size: 1.05rem; line-height: 1.7; background: #ffffff; overflow-x: auto;">SELECT bien_so, thoi_gian_vao, thoi_gian_ra
+FROM Xe x
+JOIN Ve v ON x.id = v.xe_id
+WHERE (v.thoi_gian_ra - v.thoi_gian_vao) = (
+    SELECT MAX(thoi_gian_ra - thoi_gian_vao)
+    FROM Ve
+    WHERE thoi_gian_ra IS NOT NULL
+);
+  </pre>
+</div>
+<p style="margin-top: 50px; text-align: center; font-style: italic; color: #64748b;">Cảm ơn bạn đã theo dõi! Nếu bạn thấy hữu ích, hãy thử áp dụng JOIN/Subquery vào database của mình nhé.</p>
+            ]]>
+        </content>
+    </entry>
+    <entry>
+        <title>Deploy Docker lên VPS miễn phí (Render/DigitalOcean)</title>
+        <author>
+            <name>Thiều Quang Duy</name>
+        </author>
+        <link href="https://quangduy05.github.io/my_blog/deploy-docker-len-vps-mien-phi-renderdigitalocean.html"/>
+        <id>https://quangduy05.github.io/my_blog/deploy-docker-len-vps-mien-phi-renderdigitalocean.html</id>
+            <category term="Docker"/>
+
+        <updated>2025-12-30T01:31:18+07:00</updated>
+            <summary type="html">
+                <![CDATA[
+                    Push image lên Docker Hub, deploy lên Render miễn phí. docker push yourusername/parking-app:latest
+                ]]>
+            </summary>
+        <content type="html">
+            <![CDATA[
+                <p style="line-height: 1.8; font-size: 1.2rem; color: #475569;">Push image lên Docker Hub, deploy lên Render miễn phí.</p>
+<pre style="background: #f8fafc; padding: 20px; border-radius: 12px; overflow-x: auto;">docker push yourusername/parking-app:latest
+</pre>
+            ]]>
+        </content>
+    </entry>
+    <entry>
+        <title>Docker Compose cho Spring Boot + MySQL</title>
+        <author>
+            <name>Thiều Quang Duy</name>
+        </author>
+        <link href="https://quangduy05.github.io/my_blog/docker-compose-cho-spring-boot-mysql.html"/>
+        <id>https://quangduy05.github.io/my_blog/docker-compose-cho-spring-boot-mysql.html</id>
+            <category term="Docker"/>
+
+        <updated>2025-12-30T01:30:33+07:00</updated>
+            <summary type="html">
+                <![CDATA[
+                    Chạy backend + database chỉ với một lệnh docker-compose up. services: app: build: . db: image: mysql:8.0 environment: MYSQL_ROOT_PASSWORD: duy123
+                ]]>
+            </summary>
+        <content type="html">
+            <![CDATA[
+                <p style="line-height: 1.8; font-size: 1.2rem; color: #475569;">Chạy backend + database chỉ với một lệnh docker-compose up.</p>
+<pre style="background: #f8fafc; padding: 20px; border-radius: 12px; overflow-x: auto;">services:
+  app:
+    build: .
+  db:
+    image: mysql:8.0
+    environment:
+      MYSQL_ROOT_PASSWORD: duy123
+</pre>
+            ]]>
+        </content>
+    </entry>
+    <entry>
+        <title>Docker cơ bản - Từ zero đến hero cho developer</title>
+        <author>
+            <name>Thiều Quang Duy</name>
+        </author>
+        <link href="https://quangduy05.github.io/my_blog/docker-co-ban-tu-zero-den-hero-cho-developer.html"/>
+        <id>https://quangduy05.github.io/my_blog/docker-co-ban-tu-zero-den-hero-cho-developer.html</id>
+            <category term="Docker"/>
+
+        <updated>2025-12-30T01:30:12+07:00</updated>
+            <summary type="html">
+                <![CDATA[
+                    Hướng dẫn cài Docker, Dockerfile đầu tiên cho ứng dụng Java. FROM openjdk:17-jdk-slim COPY target/your-app.jar app.jar ENTRYPOINT ["java", "-jar", "/app.jar"]
+                ]]>
+            </summary>
+        <content type="html">
+            <![CDATA[
+                <p style="line-height: 1.8; font-size: 1.2rem; color: #475569;">Hướng dẫn cài Docker, Dockerfile đầu tiên cho ứng dụng Java.</p>
+<pre style="background: #f8fafc; padding: 20px; border-radius: 12px; overflow-x: auto;">FROM openjdk:17-jdk-slim
+COPY target/your-app.jar app.jar
+ENTRYPOINT ["java", "-jar", "/app.jar"]
+</pre>
+            ]]>
+        </content>
+    </entry>
+    <entry>
+        <title>Deploy Spring Boot lên Heroku miễn phí</title>
+        <author>
+            <name>Thiều Quang Duy</name>
+        </author>
+        <link href="https://quangduy05.github.io/my_blog/deploy-spring-boot-len-heroku-mien-phi.html"/>
+        <id>https://quangduy05.github.io/my_blog/deploy-spring-boot-len-heroku-mien-phi.html</id>
+            <category term="Spring Boot"/>
+
+        <updated>2025-12-30T01:29:15+07:00</updated>
+            <summary type="html">
+                <![CDATA[
+                    Deploy ứng dụng Spring Boot lên Heroku chỉ với vài bước. # Procfile web: java -jar target/your-app.jar # application.yml server: port: ${PORT:8080}
+                ]]>
+            </summary>
+        <content type="html">
+            <![CDATA[
+                <p style="line-height: 1.8; font-size: 1.2rem; color: #475569;">Deploy ứng dụng Spring Boot lên Heroku chỉ với vài bước.</p>
+<pre style="background: #f8fafc; padding: 20px; border-radius: 12px; overflow-x: auto;"># Procfile
+web: java -jar target/your-app.jar
+
+# application.yml
+server:
+  port: ${PORT:8080}
+</pre>
+            ]]>
+        </content>
+    </entry>
+    <entry>
+        <title>Xác thực JWT trong Spring Boot - Bảo mật API</title>
+        <author>
+            <name>Thiều Quang Duy</name>
+        </author>
+        <link href="https://quangduy05.github.io/my_blog/xac-thuc-jwt-trong-spring-boot-bao-mat-api.html"/>
+        <id>https://quangduy05.github.io/my_blog/xac-thuc-jwt-trong-spring-boot-bao-mat-api.html</id>
+            <category term="Spring Boot"/>
+
+        <updated>2025-12-30T01:28:45+07:00</updated>
+            <summary type="html">
+                <![CDATA[
+                    Bảo mật API với JWT: login → token → truy cập endpoint. @PostMapping("/login") public ResponseEntity login(@RequestBody LoginRequest request) { // Kiểm tra username/password String token = jwtService.generateToken(user); return ResponseEntity.ok(token); }
+                ]]>
+            </summary>
+        <content type="html">
+            <![CDATA[
+                <p style="line-height: 1.8; font-size: 1.2rem; color: #475569;">Bảo mật API với JWT: login → token → truy cập endpoint.</p>
+<pre style="background: #f8fafc; padding: 20px; border-radius: 12px; overflow-x: auto;">@PostMapping("/login")
+public ResponseEntity login(@RequestBody LoginRequest request) {
+    // Kiểm tra username/password
+    String token = jwtService.generateToken(user);
+    return ResponseEntity.ok(token);
+}
+</pre>
+            ]]>
+        </content>
+    </entry>
     <entry>
         <title>Spring Boot REST API cơ bản cho ứng dụng quản lý bãi xe</title>
         <author>
@@ -78,405 +333,6 @@ public class ParkingController {
   </pre>
 </div>
 <p style="margin-top: 40px; border-top: 2px solid #e2e8f0; padding-top: 30px; font-weight: bold; font-size: 1.1rem; text-align: center; color: #0f172a;"> </p>
-            ]]>
-        </content>
-    </entry>
-    <entry>
-        <title>Đồng bộ hóa dữ liệu (Synchronization) đa luồng</title>
-        <author>
-            <name>Thiều Quang Duy</name>
-        </author>
-        <link href="https://quangduy05.github.io/my_blog/dong-bo-hoa-du-lieu-synchronization-da-luong.html"/>
-        <id>https://quangduy05.github.io/my_blog/dong-bo-hoa-du-lieu-synchronization-da-luong.html</id>
-            <category term="Java"/>
-
-        <updated>2025-12-29T19:14:03+07:00</updated>
-            <summary type="html">
-                <![CDATA[
-                    Xử lý đồng bộ trong Hệ thống quản lý bãi xe Trong bãi giữ xe, nếu hai camera cùng nhận diện hai xe vào một lúc và cùng cập nhật số chỗ trống, sẽ xảy ra lỗi Race Condition. Điều này khiến số lượng chỗ&hellip;
-                ]]>
-            </summary>
-        <content type="html">
-            <![CDATA[
-                <h2 style="color: #0f172a; font-size: 2.4rem; margin: 60px 0 25px; font-weight: 800; position: relative; text-align: center;">Xử lý đồng bộ trong Hệ thống quản lý bãi xe</h2>
-<p style="line-height: 1.8; font-size: 1.2rem; color: #475569; max-width: 900px; margin: 0 auto 30px; text-align: center;">Trong bãi giữ xe, nếu hai camera cùng nhận diện hai xe vào một lúc và cùng cập nhật số chỗ trống, sẽ xảy ra lỗi <strong>Race Condition</strong>. Điều này khiến số lượng chỗ trống hiển thị bị sai lệch nghiêm trọng.</p>
-<p style="line-height: 1.8; font-size: 1.2rem; color: #475569; max-width: 900px; margin: 0 auto 40px; text-align: center;">Giải pháp là sử dụng <strong>ReentrantLock</strong> để đảm bảo tại một thời điểm chỉ có một tiến trình được phép thay đổi biến <code>availableSlots</code>.</p>
-<div style="max-width: 950px; margin: 0 auto 50px; background: #f8fafc; border-radius: 16px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.08); border: 1px solid #e2e8f0;">
-<div style="background: #2563eb; color: #fff; padding: 15px 25px; font-weight: bold; font-size: 1.1rem; display: flex; align-items: center; gap: 12px;"><span style="font-size: 1.4rem;">🔒</span> ReentrantLock - Đồng bộ hóa an toàn trong Java</div>
-<pre style="padding: 30px; margin: 0; font-family: 'Consolas', 'Monaco', monospace; font-size: 1.05rem; line-height: 1.7; background: #ffffff; overflow-x: auto; border-radius: 0 0 16px 16px; white-space: pre-wrap;"><span style="color: #2563eb; font-weight: bold;">import</span> java.util.concurrent.locks.ReentrantLock;
-
-<span style="color: #2563eb; font-weight: bold;">public class</span> ParkingLotManager {
-    <span style="color: #2563eb; font-weight: bold;">private int</span> slots = 100;
-    <span style="color: #2563eb; font-weight: bold;">private final</span> ReentrantLock lock = <span style="color: #2563eb; font-weight: bold;">new</span> ReentrantLock();
-
-    <span style="color: #2563eb; font-weight: bold;">public void</span> carEntry() {
-        lock.lock();  <span style="color: #9333ea; font-style: italic;">// Bắt đầu khóa tài nguyên</span>
-        <span style="color: #2563eb; font-weight: bold;">try</span> {
-            <span style="color: #2563eb; font-weight: bold;">if</span> (slots &gt; 0) {
-                slots--;
-                System.out.println(<span style="color: #16a34a;">"Xe đã vào. Chỗ trống còn: "</span> + slots);
-            }
-        } <span style="color: #dc2626; font-weight: bold;">finally</span> {
-            lock.unlock();  <span style="color: #9333ea; font-style: italic;">// Luôn mở khóa để xe khác vào</span>
-        }
-    }
-}
-  </pre>
-</div>
-<div style="max-width: 900px; margin: 0 auto; text-align: center; font-style: italic; color: #64748b; font-size: 1.1rem; line-height: 1.8;"><strong>Lưu ý:</strong> Khối <code>finally</code> đảm bảo lock luôn được mở ngay cả khi có lỗi xảy ra, tránh deadlock.</div>
-<p> </p>
-            ]]>
-        </content>
-    </entry>
-    <entry>
-        <title>Bảo mật SSL/TLS trong Lập trình mạng</title>
-        <author>
-            <name>Thiều Quang Duy</name>
-        </author>
-        <link href="https://quangduy05.github.io/my_blog/bao-mat-ssltls-trong-lap-trinh-mang.html"/>
-        <id>https://quangduy05.github.io/my_blog/bao-mat-ssltls-trong-lap-trinh-mang.html</id>
-            <category term="Java"/>
-
-        <updated>2025-12-29T19:07:51+07:00</updated>
-            <summary type="html">
-                <![CDATA[
-                    Bảo mật kết nối Socket với SSL/TLS Khi xây dựng ứng dụng Chat hay hệ thống quản lý bãi xe, dữ liệu cá nhân của người dùng cần được bảo vệ nghiêm ngặt. Việc gửi dữ liệu qua Socket thông thường (Plaintext) có thể bị&hellip;
-                ]]>
-            </summary>
-        <content type="html">
-            <![CDATA[
-                <h2 style="color: #0f172a; font-size: 2.4rem; margin: 60px 0 25px; font-weight: 800; position: relative; text-align: center;">Bảo mật kết nối Socket với SSL/TLS</h2>
-<p style="line-height: 1.8; font-size: 1.2rem; color: #475569; max-width: 900px; margin: 0 auto 30px; text-align: center;">Khi xây dựng ứng dụng Chat hay hệ thống quản lý bãi xe, dữ liệu cá nhân của người dùng cần được bảo vệ nghiêm ngặt. Việc gửi dữ liệu qua Socket thông thường (Plaintext) có thể bị hacker đánh cắp dễ dàng qua kỹ thuật Sniffing.</p>
-<p style="line-height: 1.8; font-size: 1.2rem; color: #475569; max-width: 900px; margin: 0 auto 40px; text-align: center;">Dưới đây là mã nguồn triển khai một <strong>SSLServerSocket</strong> trong Java, giúp mã hóa toàn bộ thông tin truyền tải giữa Client và Server.</p>
-<div style="max-width: 950px; margin: 0 auto 50px; background: #f8fafc; border-radius: 16px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.08); border: 1px solid #e2e8f0;">
-<div style="background: #2563eb; color: #fff; padding: 15px 25px; font-weight: bold; font-size: 1.1rem; display: flex; align-items: center; gap: 12px;"><span style="font-size: 1.4rem;">🔒</span> SSL/TLS Server Socket - Java Example</div>
-<pre style="padding: 30px; margin: 0; font-family: 'Consolas', 'Monaco', monospace; font-size: 1.05rem; line-height: 1.7; background: #ffffff; overflow-x: auto; border-radius: 0 0 16px 16px; white-space: pre-wrap;"><span style="color: #2563eb; font-weight: bold;">import</span> javax.net.ssl.*;
-<span style="color: #2563eb; font-weight: bold;">import</span> java.io.*;
-
-<span style="color: #2563eb; font-weight: bold;">public class</span> SecureServer {
-    <span style="color: #2563eb; font-weight: bold;">public static void</span> main(String[] args) <span style="color: #2563eb; font-weight: bold;">throws</span> Exception {
-        <span style="color: #9333ea; font-style: italic;">// Thiết lập chứng chỉ bảo mật cho Server</span>
-        System.setProperty(<span style="color: #16a34a;">"javax.net.ssl.keyStore"</span>, <span style="color: #16a34a;">"mykeystore.jks"</span>);
-        System.setProperty(<span style="color: #16a34a;">"javax.net.ssl.keyStorePassword"</span>, <span style="color: #16a34a;">"duy123"</span>);
-
-        SSLServerSocketFactory ssf = (SSLServerSocketFactory) SSLServerSocketFactory.getDefault();
-        SSLServerSocket serverSocket = (SSLServerSocket) ssf.createServerSocket(8888);
-
-        System.out.println(<span style="color: #16a34a;">"Server bảo mật đang chờ kết nối..."</span>);
-
-        <span style="color: #2563eb; font-weight: bold;">try</span> (SSLSocket socket = (SSLSocket) serverSocket.accept()) {
-            PrintWriter out = <span style="color: #2563eb; font-weight: bold;">new</span> PrintWriter(socket.getOutputStream(), <span style="color: #2563eb; font-weight: bold;">true</span>);
-            out.println(<span style="color: #16a34a;">"Dữ liệu của bạn đã được mã hóa an toàn!"</span>);
-        }
-    }
-}
-  </pre>
-</div>
-<div style="max-width: 900px; margin: 0 auto; text-align: center; font-style: italic; color: #64748b; font-size: 1.1rem; line-height: 1.8; margin-top: 30px;"><strong>Lưu ý:</strong> Bạn cần tạo file keystore (mykeystore.jks) trước khi chạy server. Sử dụng công cụ <code>keytool</code> của Java để generate.</div>
-<p style="margin-top: 60px; border-top: 2px solid #e2e8f0; padding-top: 40px; font-weight: bold; font-size: 1.2rem; text-align: center; color: #0f172a;"> </p>
-            ]]>
-        </content>
-    </entry>
-    <entry>
-        <title>Từ Java Developer đến Data Engineer: Xử lý tập tin lớn</title>
-        <author>
-            <name>Thiều Quang Duy</name>
-        </author>
-        <link href="https://quangduy05.github.io/my_blog/tu-java-developer-den-data-engineer-xu-ly-tap-tin-lon.html"/>
-        <id>https://quangduy05.github.io/my_blog/tu-java-developer-den-data-engineer-xu-ly-tap-tin-lon.html</id>
-            <category term="Java"/>
-
-        <updated>2025-12-29T19:06:19+07:00</updated>
-            <summary type="html">
-                <![CDATA[
-                    Xử lý dữ liệu lớn (Big Data) trong Java Trong vai trò Data Engineer, việc đọc các file dữ liệu hàng trăm MB hay hàng GB là chuyện thường ngày. Nếu sử dụng các phương pháp đọc file thông thường, hệ thống sẽ rất dễ&hellip;
-                ]]>
-            </summary>
-        <content type="html">
-            <![CDATA[
-                <h2 style="color: #0f172a; font-size: 2.4rem; margin: 60px 0 25px; font-weight: 800; position: relative; text-align: center;">Xử lý dữ liệu lớn (Big Data) trong Java</h2>
-<p style="line-height: 1.8; font-size: 1.2rem; color: #475569; max-width: 900px; margin: 0 auto 30px; text-align: center;">Trong vai trò Data Engineer, việc đọc các file dữ liệu hàng trăm MB hay hàng GB là chuyện thường ngày. Nếu sử dụng các phương pháp đọc file thông thường, hệ thống sẽ rất dễ bị treo do tràn bộ nhớ (Heap Space).</p>
-<p style="line-height: 1.8; font-size: 1.2rem; color: #475569; max-width: 900px; margin: 0 auto 40px; text-align: center;">Để tối ưu, chúng ta sử dụng <strong>BufferedReader</strong> kết hợp với <strong>Stream API</strong>. Cách tiếp cận này giúp ứng dụng xử lý dữ liệu theo từng dòng, giảm tải cho RAM đáng kể.</p>
-<div style="max-width: 950px; margin: 0 auto 50px; background: #f8fafc; border-radius: 16px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.08); border: 1px solid #e2e8f0;">
-<div style="background: #2563eb; color: #fff; padding: 15px 25px; font-weight: bold; font-size: 1.1rem; display: flex; align-items: center; gap: 12px;"><span style="font-size: 1.4rem;">📊</span> BufferedReader + Stream - Xử lý Big Data hiệu quả</div>
-<pre style="padding: 30px; margin: 0; font-family: 'Consolas', 'Monaco', monospace; font-size: 1.05rem; line-height: 1.7; background: #ffffff; overflow-x: auto; border-radius: 0 0 16px 16px; white-space: pre-wrap;"><span style="color: #2563eb; font-weight: bold;">import</span> java.io.*;
-<span style="color: #2563eb; font-weight: bold;">import</span> java.nio.file.*;
-
-<span style="color: #2563eb; font-weight: bold;">public class</span> DataProcessor {
-    <span style="color: #2563eb; font-weight: bold;">public static void</span> main(String[] args) {
-        Path path = Paths.get(<span style="color: #16a34a;">"parking_history_big_data.csv"</span>);
-
-        <span style="color: #9333ea; font-style: italic;">// Kỹ thuật xử lý luồng để tiết kiệm tài nguyên</span>
-        <span style="color: #2563eb; font-weight: bold;">try</span> (BufferedReader reader = Files.newBufferedReader(path)) {
-            String line;
-            <span style="color: #2563eb; font-weight: bold;">long</span> count = 0;
-            <span style="color: #2563eb; font-weight: bold;">while</span> ((line = reader.readLine()) != <span style="color: #2563eb; font-weight: bold;">null</span>) {
-                count++;
-                <span style="color: #9333ea; font-style: italic;">// Giả lập xử lý dữ liệu (ETL process)</span>
-                String[] data = line.split(<span style="color: #16a34a;">","</span>);
-                <span style="color: #2563eb; font-weight: bold;">if</span> (count % 10000 == 0) {
-                    System.out.println(<span style="color: #16a34a;">"Đã nạp thành công: "</span> + count + <span style="color: #16a34a;">" dòng"</span>);
-                }
-            }
-            System.out.println(<span style="color: #16a34a;">"Hoàn tất xử lý tập tin!"</span>);
-        } <span style="color: #dc2626; font-weight: bold;">catch</span> (IOException e) {
-            e.printStackTrace();
-        }
-    }
-}
-  </pre>
-</div>
-<div style="max-width: 900px; margin: 0 auto; text-align: center; font-style: italic; color: #64748b; font-size: 1.1rem; line-height: 1.8; margin-top: 30px;"><strong>Lưu ý:</strong> Với file cực lớn (&gt;1GB), nên kết hợp <code>Files.lines()</code> + Stream API để xử lý song song (parallel stream) nhằm tăng tốc độ.</div>
-<p style="margin-top: 60px; border-top: 2px solid #e2e8f0; padding-top: 40px; font-weight: bold; font-size: 1.2rem; text-align: center; color: #0f172a;"> </p>
-            ]]>
-        </content>
-    </entry>
-    <entry>
-        <title>DOM trong JavaScript</title>
-        <author>
-            <name>Thiều Quang Duy</name>
-        </author>
-        <link href="https://quangduy05.github.io/my_blog/dom-trong-javascript.html"/>
-        <id>https://quangduy05.github.io/my_blog/dom-trong-javascript.html</id>
-            <category term="JavaScript"/>
-
-        <updated>2025-12-29T19:03:27+07:00</updated>
-            <summary type="html">
-                <![CDATA[
-                    Điều khiển Website theo ý muốn DOM (Document Object Model) cho phép bạn thay đổi màu sắc, nội dung, hoặc hành vi của trang web mà không cần tải lại trang. Đây chính là bí mật đằng sau các website hiện đại, tương tác mượt&hellip;
-                ]]>
-            </summary>
-        <content type="html">
-            <![CDATA[
-                <h2 style="color: #0f172a; font-size: 2.4rem; margin: 60px 0 25px; font-weight: 800; position: relative; text-align: center;">Điều khiển Website theo ý muốn</h2>
-<p style="line-height: 1.8; font-size: 1.2rem; color: #475569; max-width: 900px; margin: 0 auto 30px; text-align: center;">DOM (Document Object Model) cho phép bạn thay đổi màu sắc, nội dung, hoặc hành vi của trang web mà không cần tải lại trang. Đây chính là bí mật đằng sau các website hiện đại, tương tác mượt mà mà bạn thấy hàng ngày.</p>
-<div style="max-width: 950px; margin: 0 auto 50px; background: #f8fafc; border-radius: 16px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.08); border: 1px solid #e2e8f0;">
-<div style="background: #2563eb; color: #fff; padding: 15px 25px; font-weight: bold; font-size: 1.1rem; display: flex; align-items: center; gap: 12px;"><span style="font-size: 1.4rem;">🕹️</span> DOM Manipulation - Thay đổi trang web theo ý muốn</div>
-<pre style="padding: 30px; margin: 0; font-family: 'Consolas', 'Monaco', monospace; font-size: 1.05rem; line-height: 1.7; background: #ffffff; overflow-x: auto; border-radius: 0 0 16px 16px; white-space: pre-wrap;"><span style="color: #2563eb; font-weight: bold;">// Lấy nút button và thay đổi nội dung khi click</span>
-<span style="color: #2563eb; font-weight: bold;">const</span> btn = document.getElementById(<span style="color: #16a34a;">"btn"</span>);
-
-btn.addEventListener(<span style="color: #16a34a;">"click"</span>, () =&gt; {
-    btn.innerHTML = <span style="color: #16a34a;">"Đã nhấn!"</span>;
-    btn.style.backgroundColor = <span style="color: #16a34a;">"#16a34a"</span>; <span style="color: #9333ea; font-style: italic;">// Màu xanh lá</span>
-    btn.style.color = <span style="color: #16a34a;">"#ffffff"</span>;
-    btn.style.transform = <span style="color: #16a34a;">"scale(1.1)"</span>; <span style="color: #9333ea; font-style: italic;">// Phóng to nhẹ</span>
-});
-  </pre>
-</div>
-<div style="max-width: 900px; margin: 0 auto; text-align: center; font-style: italic; color: #64748b; font-size: 1.1rem; line-height: 1.8; margin-top: 30px;"><strong>Lưu ý:</strong> Bạn có thể thay đổi bất kỳ phần tử nào trên trang (text, màu, vị trí, ẩn/hiện) chỉ với vài dòng JavaScript.</div>
-<p style="margin-top: 60px; border-top: 2px solid #e2e8f0; padding-top: 40px; font-weight: bold; font-size: 1.2rem; text-align: center; color: #0f172a;"> </p>
-            ]]>
-        </content>
-    </entry>
-    <entry>
-        <title>Giao thức TCP/IP và UDP</title>
-        <author>
-            <name>Thiều Quang Duy</name>
-        </author>
-        <link href="https://quangduy05.github.io/my_blog/giao-thuc-tcpip-va-udp.html"/>
-        <id>https://quangduy05.github.io/my_blog/giao-thuc-tcpip-va-udp.html</id>
-            <category term="Java"/>
-
-        <updated>2025-12-29T19:02:58+07:00</updated>
-            <summary type="html">
-                <![CDATA[
-                    Nên chọn TCP hay UDP? TCP đảm bảo dữ liệu đến đích chính xác, không mất mát (như gửi email hoặc chat), còn UDP ưu tiên tốc độ và ít độ trễ (như livestream hoặc game online). Trong Java, Socket thường dùng TCP để đảm&hellip;
-                ]]>
-            </summary>
-        <content type="html">
-            <![CDATA[
-                <h2 style="color: #0f172a; font-size: 2.4rem; margin: 60px 0 25px; font-weight: 800; position: relative; text-align: center;">Nên chọn TCP hay UDP?</h2>
-<p style="line-height: 1.8; font-size: 1.2rem; color: #475569; max-width: 900px; margin: 0 auto 30px; text-align: center;">TCP đảm bảo dữ liệu đến đích chính xác, không mất mát (như gửi email hoặc chat), còn UDP ưu tiên tốc độ và ít độ trễ (như livestream hoặc game online). Trong Java, <strong>Socket</strong> thường dùng TCP để đảm bảo tin nhắn chat không bị mất.</p>
-<div style="max-width: 900px; margin: 0 auto 50px; border-radius: 16px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.08);"><img loading="lazy" style="width: 100%; height: auto; display: block; border-radius: 16px;" src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&amp;fit=crop&amp;w=800" alt="Network illustration" data-is-external-image="true"></div>
-<div style="max-width: 900px; margin: 0 auto; background: #f8fafc; padding: 30px; border-radius: 16px; box-shadow: 0 6px 20px rgba(0,0,0,0.05); border: 1px solid #e2e8f0;">
-<h3 style="font-size: 1.6rem; color: #0f172a; margin-bottom: 20px; text-align: center;">So sánh TCP vs UDP</h3>
-<table style="width: 100%; border-collapse: collapse; font-size: 1.1rem; color: #475569;">
-<thead>
-<tr style="background: #2563eb; color: #fff;">
-<th style="padding: 15px; border-radius: 8px 0 0 0;">Tiêu chí</th>
-<th style="padding: 15px;">TCP</th>
-<th style="padding: 15px; border-radius: 0 8px 0 0;">UDP</th>
-</tr>
-</thead>
-<tbody>
-<tr style="border-bottom: 1px solid #e2e8f0;">
-<td style="padding: 15px; font-weight: bold;">Độ tin cậy</td>
-<td style="padding: 15px; color: #16a34a;">✔ Đảm bảo 100% (kiểm tra lỗi, gửi lại)</td>
-<td style="padding: 15px; color: #dc2626;">✘ Không đảm bảo</td>
-</tr>
-<tr style="border-bottom: 1px solid #e2e8f0;">
-<td style="padding: 15px; font-weight: bold;">Thứ tự dữ liệu</td>
-<td style="padding: 15px; color: #16a34a;">✔ Giữ nguyên thứ tự</td>
-<td style="padding: 15px; color: #dc2626;">✘ Không đảm bảo</td>
-</tr>
-<tr style="border-bottom: 1px solid #e2e8f0;">
-<td style="padding: 15px; font-weight: bold;">Tốc độ</td>
-<td style="padding: 15px; color: #dc2626;">Chậm hơn (do kiểm tra)</td>
-<td style="padding: 15px; color: #16a34a;">Nhanh hơn</td>
-</tr>
-<tr style="border-bottom: 1px solid #e2e8f0;">
-<td style="padding: 15px; font-weight: bold;">Trường hợp sử dụng</td>
-<td style="padding: 15px;">Chat, email, tải file, HTTP/HTTPS</td>
-<td style="padding: 15px;">Livestream, game online, DNS, VoIP</td>
-</tr>
-<tr>
-<td style="padding: 15px; font-weight: bold;">Java hỗ trợ</td>
-<td style="padding: 15px;">Socket, ServerSocket</td>
-<td style="padding: 15px;">DatagramSocket</td>
-</tr>
-</tbody>
-</table>
-</div>
-<div style="max-width: 900px; margin: 0 auto; text-align: center; font-style: italic; color: #64748b; font-size: 1.1rem; line-height: 1.8; margin-top: 40px;"><strong>Tóm lại:</strong> Chọn TCP khi cần độ tin cậy cao (như chat trong hệ thống quản lý bãi xe), chọn UDP khi ưu tiên tốc độ và chấp nhận mất mát nhỏ (như video stream).</div>
-<p style="margin-top: 60px; border-top: 2px solid #e2e8f0; padding-top: 40px; font-weight: bold; font-size: 1.2rem; text-align: center; color: #0f172a;"> </p>
-            ]]>
-        </content>
-    </entry>
-    <entry>
-        <title>JavaScript căn bản cho Web</title>
-        <author>
-            <name>Thiều Quang Duy</name>
-        </author>
-        <link href="https://quangduy05.github.io/my_blog/javascript-can-ban-cho-web.html"/>
-        <id>https://quangduy05.github.io/my_blog/javascript-can-ban-cho-web.html</id>
-            <category term="JavaScript"/>
-
-        <updated>2025-12-29T19:02:28+07:00</updated>
-            <summary type="html">
-                <![CDATA[
-                    Sức mạnh của JavaScript Nếu HTML là khung xương, CSS là quần áo thì JavaScript chính là bộ não giúp website "cử động" và tương tác mượt mà. Trong đồ án quản lý bãi xe này, JS giúp các nút bấm trên Menu hoạt động&hellip;
-                ]]>
-            </summary>
-        <content type="html">
-            <![CDATA[
-                <h2 style="color: #0f172a; font-size: 2.4rem; margin: 60px 0 25px; font-weight: 800; position: relative; text-align: center;">Sức mạnh của JavaScript</h2>
-<p style="line-height: 1.8; font-size: 1.2rem; color: #475569; max-width: 900px; margin: 0 auto 30px; text-align: center;">Nếu HTML là khung xương, CSS là quần áo thì JavaScript chính là bộ não giúp website "cử động" và tương tác mượt mà. Trong đồ án quản lý bãi xe này, JS giúp các nút bấm trên Menu hoạt động nhanh chóng, cập nhật số chỗ trống thời gian thực mà không cần tải lại trang.</p>
-<div style="max-width: 900px; margin: 0 auto 50px; border-radius: 16px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.08);"><img loading="lazy" style="width: 100%; height: auto; display: block; border-radius: 16px;" src="https://images.unsplash.com/photo-1579468118864-1b9ea3c0db4a?auto=format&amp;fit=crop&amp;w=800" alt="JavaScript logo illustration" data-is-external-image="true"></div>
-<div style="max-width: 900px; margin: 0 auto; background: #f8fafc; padding: 30px; border-radius: 16px; box-shadow: 0 6px 20px rgba(0,0,0,0.05); border: 1px solid #e2e8f0;">
-<h3 style="font-size: 1.6rem; color: #0f172a; margin-bottom: 20px; text-align: center;">Tại sao JavaScript mạnh mẽ?</h3>
-<ul style="list-style: none; padding: 0; font-size: 1.1rem; color: #475569; line-height: 1.8;">
-<li style="margin-bottom: 15px; display: flex; align-items: flex-start; gap: 12px;"><span style="font-size: 1.5rem; color: #2563eb;">⚡</span>
-<div><strong>Tương tác thời gian thực:</strong> Cập nhật số chỗ trống bãi xe ngay lập tức khi xe vào/ra.</div>
-</li>
-<li style="margin-bottom: 15px; display: flex; align-items: flex-start; gap: 12px;"><span style="font-size: 1.5rem; color: #2563eb;">🧠</span>
-<div><strong>Thao tác DOM linh hoạt:</strong> Thay đổi nội dung, màu sắc, ẩn/hiện phần tử mà không reload trang.</div>
-</li>
-<li style="margin-bottom: 15px; display: flex; align-items: flex-start; gap: 12px;"><span style="font-size: 1.5rem; color: #2563eb;">🚀</span>
-<div><strong>Async/Await &amp; Fetch API:</strong> Gọi API lấy dữ liệu từ server mà không làm gián đoạn trải nghiệm người dùng.</div>
-</li>
-<li style="display: flex; align-items: flex-start; gap: 12px;"><span style="font-size: 1.5rem; color: #2563eb;">📱</span>
-<div><strong>Responsive &amp; Mobile-first:</strong> Tự động điều chỉnh giao diện trên mọi thiết bị.</div>
-</li>
-</ul>
-</div>
-<div style="max-width: 900px; margin: 0 auto 40px; text-align: center; font-style: italic; color: #64748b; font-size: 1.1rem; line-height: 1.8;"><strong>Ví dụ thực tế:</strong> Khi tài xế nhấn "Vào bãi", JS sẽ gọi API, cập nhật số chỗ trống và thông báo ngay lập tức – tất cả chỉ trong vài giây.</div>
-<p style="margin-top: 60px; border-top: 2px solid #e2e8f0; padding-top: 40px; font-weight: bold; font-size: 1.2rem; text-align: center; color: #0f172a;"> </p>
-            ]]>
-        </content>
-    </entry>
-    <entry>
-        <title>Kết nối Cơ sở dữ liệu (JDBC)</title>
-        <author>
-            <name>Thiều Quang Duy</name>
-        </author>
-        <link href="https://quangduy05.github.io/my_blog/ket-noi-co-so-du-lieu-jdbc.html"/>
-        <id>https://quangduy05.github.io/my_blog/ket-noi-co-so-du-lieu-jdbc.html</id>
-            <category term="Java"/>
-
-        <updated>2025-12-29T19:01:58+07:00</updated>
-            <summary type="html">
-                <![CDATA[
-                    Nền tảng của một Data Engineer Việc lấy dữ liệu từ Database là kỹ năng tối quan trọng của một Data Engineer. JDBC (Java Database Connectivity) chính là cầu nối giúp ứng dụng Java giao tiếp mượt mà với các hệ quản trị cơ sở&hellip;
-                ]]>
-            </summary>
-        <content type="html">
-            <![CDATA[
-                <h2 style="color: #0f172a; font-size: 2.4rem; margin: 60px 0 25px; font-weight: 800; position: relative; text-align: center;">Nền tảng của một Data Engineer</h2>
-<p style="line-height: 1.8; font-size: 1.2rem; color: #475569; max-width: 900px; margin: 0 auto 30px; text-align: center;">Việc lấy dữ liệu từ Database là kỹ năng tối quan trọng của một Data Engineer. JDBC (Java Database Connectivity) chính là cầu nối giúp ứng dụng Java giao tiếp mượt mà với các hệ quản trị cơ sở dữ liệu như SQL Server, MySQL, PostgreSQL hay Oracle.</p>
-<div style="max-width: 900px; margin: 0 auto 50px; border-radius: 16px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.08);"><img loading="lazy" style="width: 100%; height: auto; display: block; border-radius: 16px;" src="https://images.unsplash.com/photo-1544383835-bda2bc66a55d?auto=format&amp;fit=crop&amp;w=800" alt="Database illustration" data-is-external-image="true"></div>
-<p style="line-height: 1.8; font-size: 1.2rem; color: #475569; max-width: 900px; margin: 0 auto 40px; text-align: center;">Để bắt đầu, bạn cần chuẩn bị <strong>Driver JDBC</strong> (thư viện kết nối) và <strong>chuỗi kết nối (Connection String)</strong> phù hợp với database của mình.</p>
-<div style="max-width: 950px; margin: 0 auto 50px; background: #f8fafc; border-radius: 16px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.08); border: 1px solid #e2e8f0;">
-<div style="background: #2563eb; color: #fff; padding: 15px 25px; font-weight: bold; font-size: 1.1rem; display: flex; align-items: center; gap: 12px;"><span style="font-size: 1.4rem;">🗄️</span> JDBC Connection - Kết nối Database từ Java</div>
-<pre style="padding: 30px; margin: 0; font-family: 'Consolas', 'Monaco', monospace; font-size: 1.05rem; line-height: 1.7; background: #ffffff; overflow-x: auto; border-radius: 0 0 16px 16px; white-space: pre-wrap;"><span style="color: #2563eb; font-weight: bold;">import</span> java.sql.*;
-
-<span style="color: #2563eb; font-weight: bold;">public class</span> DatabaseConnection {
-    <span style="color: #2563eb; font-weight: bold;">public static void</span> main(String[] args) {
-        String url = <span style="color: #16a34a;">"jdbc:mysql://localhost:3306/duy_parking"</span>; <span style="color: #9333ea; font-style: italic;">// Thay bằng URL của bạn</span>
-        String user = <span style="color: #16a34a;">"root"</span>;
-        String password = <span style="color: #16a34a;">"duy123"</span>;
-
-        <span style="color: #2563eb; font-weight: bold;">try</span> (Connection conn = DriverManager.getConnection(url, user, password)) {
-            System.out.println(<span style="color: #16a34a;">"Kết nối thành công với Database!"</span>);
-
-            <span style="color: #9333ea; font-style: italic;">// Ví dụ truy vấn đơn giản</span>
-            Statement stmt = conn.createStatement();
-            ResultSet rs = stmt.executeQuery(<span style="color: #16a34a;">"SELECT * FROM parking_slots"</span>);
-
-            <span style="color: #2563eb; font-weight: bold;">while</span> (rs.next()) {
-                System.out.println(<span style="color: #16a34a;">"Chỗ trống: "</span> + rs.getInt(<span style="color: #16a34a;">"available_slots"</span>));
-            }
-        } <span style="color: #dc2626; font-weight: bold;">catch</span> (SQLException e) {
-            e.printStackTrace();
-        }
-    }
-}
-  </pre>
-</div>
-<div style="max-width: 900px; margin: 0 auto; text-align: center; font-style: italic; color: #64748b; font-size: 1.1rem; line-height: 1.8; margin-top: 30px;"><strong>Lưu ý:</strong> Đảm bảo thêm JDBC Driver vào project (ví dụ: mysql-connector-java.jar) và cấu hình Connection String đúng với database của bạn.</div>
-<p style="margin-top: 60px; border-top: 2px solid #e2e8f0; padding-top: 40px; font-weight: bold; font-size: 1.2rem; text-align: center; color: #0f172a;"> </p>
-            ]]>
-        </content>
-    </entry>
-    <entry>
-        <title>Xử lý Đa luồng (Multi-threading) trong Java</title>
-        <author>
-            <name>Thiều Quang Duy</name>
-        </author>
-        <link href="https://quangduy05.github.io/my_blog/xu-ly-da-luong-multi-threading-trong-java.html"/>
-        <id>https://quangduy05.github.io/my_blog/xu-ly-da-luong-multi-threading-trong-java.html</id>
-            <category term="Java"/>
-
-        <updated>2025-12-29T19:01:23+07:00</updated>
-            <summary type="html">
-                <![CDATA[
-                    Tại sao cần Đa luồng trong quản lý bãi xe? Hãy tưởng tượng bãi giữ xe của bạn có hàng trăm xe ra vào cùng lúc. Nếu chỉ xử lý đơn luồng, xe này phải đợi xe kia thanh toán xong mới được vào. Đa&hellip;
-                ]]>
-            </summary>
-        <content type="html">
-            <![CDATA[
-                <h2 style="color: #0f172a; font-size: 2.4rem; margin: 60px 0 25px; font-weight: 800; position: relative; text-align: center;">Tại sao cần Đa luồng trong quản lý bãi xe?</h2>
-<p style="line-height: 1.8; font-size: 1.2rem; color: #475569; max-width: 900px; margin: 0 auto 30px; text-align: center;">Hãy tưởng tượng bãi giữ xe của bạn có hàng trăm xe ra vào cùng lúc. Nếu chỉ xử lý đơn luồng, xe này phải đợi xe kia thanh toán xong mới được vào. <strong>Đa luồng (Multi-threading)</strong> cho phép hệ thống xử lý nhiều yêu cầu đồng thời, giúp camera nhận diện biển số, máy in vé và cổng mở hoạt động cùng lúc mà không gây ùn tắc.</p>
-<div style="max-width: 900px; margin: 0 auto 50px; border-radius: 16px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.08);"><img loading="lazy" style="width: 100%; height: auto; display: block; border-radius: 16px;" src="https://images.unsplash.com/photo-1506521781263-d8422e82f27a?auto=format&amp;fit=crop&amp;w=800" alt="Parking system illustration" data-is-external-image="true"></div>
-<h3 style="color: #0f172a; font-size: 1.8rem; margin: 50px 0 20px; text-align: center; font-weight: bold;">Ví dụ code mô phỏng luồng xe</h3>
-<div style="max-width: 950px; margin: 0 auto 50px; background: #f8fafc; border-radius: 16px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.08); border: 1px solid #e2e8f0;">
-<div style="background: #2563eb; color: #fff; padding: 15px 25px; font-weight: bold; font-size: 1.1rem; display: flex; align-items: center; gap: 12px;"><span style="font-size: 1.4rem;">🚗</span> Multi-threading - Mô phỏng cổng xe vào/ra</div>
-<pre style="padding: 30px; margin: 0; font-family: 'Consolas', 'Monaco', monospace; font-size: 1.05rem; line-height: 1.7; background: #ffffff; overflow-x: auto; border-radius: 0 0 16px 16px; white-space: pre-wrap;"><span style="color: #2563eb; font-weight: bold;">import</span> java.util.concurrent.*;
-
-<span style="color: #2563eb; font-weight: bold;">public class</span> ParkingGateSimulation {
-    <span style="color: #2563eb; font-weight: bold;">public static void</span> main(String[] args) {
-        ExecutorService executor = Executors.newFixedThreadPool(3); <span style="color: #9333ea; font-style: italic;">// 3 cổng xe</span>
-
-        <span style="color: #2563eb; font-weight: bold;">for</span> (int i = 1; i &lt;= 10; i++) {
-            <span style="color: #2563eb; font-weight: bold;">final int</span> carId = i;
-            executor.submit(() -&gt; {
-                String gateName = <span style="color: #16a34a;">"Cổng " + (carId % 3 + 1)</span>;
-                System.out.println(gateName + <span style="color: #16a34a;">" đang xử lý xe "</span> + carId + <span style="color: #16a34a;">"..."</span>);
-                <span style="color: #2563eb; font-weight: bold;">try</span> {
-                    Thread.sleep(1500); <span style="color: #9333ea; font-style: italic;">// Giả lập thời gian xử lý</span>
-                } <span style="color: #dc2626; font-weight: bold;">catch</span> (InterruptedException e) {
-                    e.printStackTrace();
-                }
-                System.out.println(gateName + <span style="color: #16a34a;">" đã cho xe "</span> + carId + <span style="color: #16a34a;">" vào!"</span>);
-            });
-        }
-
-        executor.shutdown();
-    }
-}
-  </pre>
-</div>
-<div style="max-width: 900px; margin: 0 auto; text-align: center; font-style: italic; color: #64748b; font-size: 1.1rem; line-height: 1.8; margin-top: 30px;"><strong>Lợi ích:</strong> Xử lý đồng thời nhiều xe, giảm thời gian chờ, tăng hiệu suất hệ thống. Sử dụng <code>ExecutorService</code> để quản lý thread an toàn và dễ mở rộng.</div>
-<p style="margin-top: 60px; border-top: 2px solid #e2e8f0; padding-top: 40px; font-weight: bold; font-size: 1.2rem; text-align: center; color: #0f172a;"> </p>
             ]]>
         </content>
     </entry>
