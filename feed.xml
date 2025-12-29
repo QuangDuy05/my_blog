@@ -3,10 +3,419 @@
     <title>Blog Lập Trình Mạng - Thiều Quang Duy</title>
     <link href="https://quangduy05.github.io/my_blog/feed.xml" rel="self" />
     <link href="https://quangduy05.github.io/my_blog" />
-    <updated>1970-01-01T08:00:00+08:00</updated>
+    <updated>2025-12-29T19:14:52+07:00</updated>
     <author>
         <name>Thiều Quang Duy</name>
     </author>
     <id>https://quangduy05.github.io/my_blog</id>
 
+    <entry>
+        <title>Tổng kết Đồ án và Lập trình Bất đồng bộ (JavaScript)</title>
+        <author>
+            <name>Thiều Quang Duy</name>
+        </author>
+        <link href="https://quangduy05.github.io/my_blog/tong-ket-do-an-va-lap-trinh-bat-dong-bo-javascript.html"/>
+        <id>https://quangduy05.github.io/my_blog/tong-ket-do-an-va-lap-trinh-bat-dong-bo-javascript.html</id>
+            <category term="JavaScript"/>
+
+        <updated>2025-12-29T19:14:52+07:00</updated>
+            <summary type="html">
+                <![CDATA[
+                    Lời kết và Kỹ thuật Async/Await trong JavaScript Để khép lại hành trình xây dựng blog này, chúng ta cùng&hellip;
+                ]]>
+            </summary>
+        <content type="html">
+            <![CDATA[
+                <h2 style="color: #333;">Lời kết và Kỹ thuật Async/Await trong JavaScript</h2>
+<p style="line-height: 1.6;">Để khép lại hành trình xây dựng blog này, chúng ta cùng nhìn qua cách JavaScript xử lý các tác vụ mạng một cách mượt mà thông qua <strong>Async/Await</strong>. Đây là cách giúp website của Duy tải dữ liệu từ bãi xe mà không làm đơ trang web của người dùng.</p>
+<div class="code-box">
+<pre><span class="keyword">async function</span> getParkingStats() {
+    <span class="keyword">try</span> {
+        <span class="comment">// Gọi API lấy dữ liệu thực tế từ máy chủ</span>
+        <span class="keyword">const</span> response = <span class="keyword">await</span> fetch(<span class="string">'https://api.duyparking.vn/v1/stats'</span>);
+        <span class="keyword">const</span> data = <span class="keyword">await</span> response.json();
+        console.log(<span class="string">"Dữ liệu bãi xe:"</span>, data);
+        document.getElementById(<span class="string">"status"</span>).innerText = <span class="string">"Còn trống: "</span> + data.slots;
+    } <span class="keyword">catch</span> (error) {
+        console.error(<span class="string">"Lỗi kết nối mạng: "</span>, error);
+    }
+}
+</pre>
+</div>
+<p style="margin-top: 30px; border-top: 1px solid #eee; padding-top: 20px; font-weight: bold;"> </p>
+            ]]>
+        </content>
+    </entry>
+    <entry>
+        <title>Đồng bộ hóa dữ liệu (Synchronization) đa luồng</title>
+        <author>
+            <name>Thiều Quang Duy</name>
+        </author>
+        <link href="https://quangduy05.github.io/my_blog/dong-bo-hoa-du-lieu-synchronization-da-luong.html"/>
+        <id>https://quangduy05.github.io/my_blog/dong-bo-hoa-du-lieu-synchronization-da-luong.html</id>
+            <category term="Java"/>
+
+        <updated>2025-12-29T19:14:03+07:00</updated>
+            <summary type="html">
+                <![CDATA[
+                    Xử lý đồng bộ trong Hệ thống quản lý bãi xe Trong bãi giữ xe, nếu hai camera cùng nhận&hellip;
+                ]]>
+            </summary>
+        <content type="html">
+            <![CDATA[
+                <h2 style="color: #333;">Xử lý đồng bộ trong Hệ thống quản lý bãi xe</h2>
+<p style="line-height: 1.6;">Trong bãi giữ xe, nếu hai camera cùng nhận diện hai xe vào một lúc và cùng cập nhật số chỗ trống, sẽ xảy ra lỗi <strong>Race Condition</strong>. Điều này khiến số lượng chỗ trống hiển thị bị sai lệch.</p>
+<p style="line-height: 1.6;">Giải pháp là sử dụng <strong>ReentrantLock</strong> để đảm bảo tại một thời điểm chỉ có một tiến trình được phép thay đổi biến <code>availableSlots</code>.</p>
+<div class="code-box">
+<pre><span class="keyword">import</span> java.util.concurrent.locks.ReentrantLock;
+
+<span class="keyword">public class</span> ParkingLotManager {
+    <span class="keyword">private int</span> slots = 100;
+    <span class="keyword">private final</span> ReentrantLock lock = <span class="keyword">new</span> ReentrantLock();
+
+    <span class="keyword">public void</span> carEntry() {
+        lock.lock(); <span class="comment">// Bắt đầu khóa tài nguyên</span>
+        <span class="keyword">try</span> {
+            <span class="keyword">if</span> (slots &gt; 0) {
+                slots--;
+                System.out.println(<span class="string">"Xe đã vào. Chỗ trống còn: "</span> + slots);
+            }
+        } <span class="keyword">finally</span> {
+            lock.unlock(); <span class="comment">// Luôn mở khóa để xe khác vào</span>
+        }
+    }
+}
+</pre>
+</div>
+            ]]>
+        </content>
+    </entry>
+    <entry>
+        <title>Bảo mật SSL/TLS trong Lập trình mạng</title>
+        <author>
+            <name>Thiều Quang Duy</name>
+        </author>
+        <link href="https://quangduy05.github.io/my_blog/bao-mat-ssltls-trong-lap-trinh-mang.html"/>
+        <id>https://quangduy05.github.io/my_blog/bao-mat-ssltls-trong-lap-trinh-mang.html</id>
+            <category term="Java"/>
+
+        <updated>2025-12-29T19:07:51+07:00</updated>
+            <summary type="html">
+                <![CDATA[
+                    Bảo mật kết nối Socket với SSL/TLS Khi xây dựng ứng dụng Chat hay hệ thống quản lý bãi xe,&hellip;
+                ]]>
+            </summary>
+        <content type="html">
+            <![CDATA[
+                <h2 style="color: #333;">Bảo mật kết nối Socket với SSL/TLS</h2>
+<p style="line-height: 1.6;">Khi xây dựng ứng dụng Chat hay hệ thống quản lý bãi xe, dữ liệu cá nhân của người dùng cần được bảo vệ. Việc gửi dữ liệu qua Socket thông thường (Plaintext) có thể bị hacker đánh cắp dễ dàng qua kỹ thuật Sniffing.</p>
+<p style="line-height: 1.6;">Dưới đây là mã nguồn triển khai một <strong>SSLServerSocket</strong> trong Java, giúp mã hóa toàn bộ thông tin truyền tải giữa Client và Server.</p>
+<div class="code-box">
+<pre><span class="keyword">import</span> javax.net.ssl.*;
+<span class="keyword">import</span> java.io.*;
+
+<span class="keyword">public class</span> SecureServer {
+    <span class="keyword">public static void</span> main(String[] args) <span class="keyword">throws</span> Exception {
+        <span class="comment">// Thiết lập chứng chỉ bảo mật cho Server</span>
+        System.setProperty(<span class="string">"javax.net.ssl.keyStore"</span>, <span class="string">"mykeystore.jks"</span>);
+        System.setProperty(<span class="string">"javax.net.ssl.keyStorePassword"</span>, <span class="string">"duy123"</span>);
+
+        SSLServerSocketFactory ssf = (SSLServerSocketFactory) SSLServerSocketFactory.getDefault();
+        SSLServerSocket serverSocket = (SSLServerSocket) ssf.createServerSocket(8888);
+
+        System.out.println(<span class="string">"Server bảo mật đang chờ kết nối..."</span>);
+        <span class="keyword">try</span> (SSLSocket socket = (SSLSocket) serverSocket.accept()) {
+            PrintWriter out = <span class="keyword">new</span> PrintWriter(socket.getOutputStream(), <span class="keyword">true</span>);
+            out.println(<span class="string">"Dữ liệu của bạn đã được mã hóa an toàn!"</span>);
+        }
+    }
+}
+</pre>
+</div>
+            ]]>
+        </content>
+    </entry>
+    <entry>
+        <title>Từ Java Developer đến Data Engineer: Xử lý tập tin lớn</title>
+        <author>
+            <name>Thiều Quang Duy</name>
+        </author>
+        <link href="https://quangduy05.github.io/my_blog/tu-java-developer-den-data-engineer-xu-ly-tap-tin-lon.html"/>
+        <id>https://quangduy05.github.io/my_blog/tu-java-developer-den-data-engineer-xu-ly-tap-tin-lon.html</id>
+            <category term="Java"/>
+
+        <updated>2025-12-29T19:06:19+07:00</updated>
+            <summary type="html">
+                <![CDATA[
+                    Xử lý dữ liệu lớn (Big Data) trong Java Trong vai trò Data Engineer, việc đọc các file dữ liệu&hellip;
+                ]]>
+            </summary>
+        <content type="html">
+            <![CDATA[
+                <h2 style="color: #333;">Xử lý dữ liệu lớn (Big Data) trong Java</h2>
+<p style="line-height: 1.6;">Trong vai trò Data Engineer, việc đọc các file dữ liệu hàng trăm MB hay hàng GB là chuyện thường ngày. Nếu sử dụng các phương pháp đọc file thông thường, hệ thống sẽ rất dễ bị treo do tràn bộ nhớ (Heap Space).</p>
+<p style="line-height: 1.6;">Để tối ưu, chúng ta sử dụng <strong>BufferedReader</strong> kết hợp với <strong>Stream API</strong>. Cách tiếp cận này giúp ứng dụng xử lý dữ liệu theo từng dòng, giảm tải cho RAM đáng kể.</p>
+<div class="code-box">
+<pre><span class="keyword">import</span> java.io.*;
+<span class="keyword">import</span> java.nio.file.*;
+
+<span class="keyword">public class</span> DataProcessor {
+    <span class="keyword">public static void</span> main(String[] args) {
+        Path path = Paths.get(<span class="string">"parking_history_big_data.csv"</span>);
+        <span class="comment">// Kỹ thuật xử lý luồng để tiết kiệm tài nguyên</span>
+        <span class="keyword">try</span> (BufferedReader reader = Files.newBufferedReader(path)) {
+            String line;
+            <span class="keyword">long</span> count = 0;
+            <span class="keyword">while</span> ((line = reader.readLine()) != <span class="keyword">null</span>) {
+                count++;
+                <span class="comment">// Giả lập xử lý dữ liệu (ETL process)</span>
+                String[] data = line.split(<span class="string">","</span>);
+                <span class="keyword">if</span> (count % 10000 == 0) {
+                    System.out.println(<span class="string">"Đã nạp thành công: "</span> + count + <span class="string">" dòng"</span>);
+                }
+            }
+            System.out.println(<span class="string">"Hoàn tất xử lý tập tin!"</span>);
+        } <span class="keyword">catch</span> (IOException e) {
+            e.printStackTrace();
+        }
+    }
+}
+</pre>
+</div>
+            ]]>
+        </content>
+    </entry>
+    <entry>
+        <title>DOM trong JavaScript</title>
+        <author>
+            <name>Thiều Quang Duy</name>
+        </author>
+        <link href="https://quangduy05.github.io/my_blog/dom-trong-javascript.html"/>
+        <id>https://quangduy05.github.io/my_blog/dom-trong-javascript.html</id>
+            <category term="JavaScript"/>
+
+        <updated>2025-12-29T19:03:27+07:00</updated>
+            <summary type="html">
+                <![CDATA[
+                    Điều khiển Website theo ý muốn DOM (Document Object Model) cho phép ní thay đổi màu sắc, nội dung trang&hellip;
+                ]]>
+            </summary>
+        <content type="html">
+            <![CDATA[
+                <h2 style="color: #333;">Điều khiển Website theo ý muốn</h2>
+<p style="line-height: 1.6;">DOM (Document Object Model) cho phép ní thay đổi màu sắc, nội dung trang web mà không cần tải lại trang. Đây là bí mật của các website hiện đại.</p>
+<p style="background: #eee; padding: 10px;">document.getElementById("btn").innerHTML = "Đã nhấn!";</p>
+            ]]>
+        </content>
+    </entry>
+    <entry>
+        <title>Giao thức TCP/IP và UDP</title>
+        <author>
+            <name>Thiều Quang Duy</name>
+        </author>
+        <link href="https://quangduy05.github.io/my_blog/giao-thuc-tcpip-va-udp.html"/>
+        <id>https://quangduy05.github.io/my_blog/giao-thuc-tcpip-va-udp.html</id>
+            <category term="Java"/>
+
+        <updated>2025-12-29T19:02:58+07:00</updated>
+            <summary type="html">
+                <![CDATA[
+                    Nên chọn TCP hay UDP? TCP đảm bảo dữ liệu đến đích chính xác (như gửi email), còn UDP ưu&hellip;
+                ]]>
+            </summary>
+        <content type="html">
+            <![CDATA[
+                <h2 style="color: #333;">Nên chọn TCP hay UDP?</h2>
+<p style="line-height: 1.6;">TCP đảm bảo dữ liệu đến đích chính xác (như gửi email), còn UDP ưu tiên tốc độ (như livestream). Trong Java, Socket thường dùng TCP để đảm bảo tin nhắn chat không bị mất.</p>
+<p style="text-align: center;"><img loading="lazy" style="border-radius: 8px; max-width: 100%;" src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&amp;fit=crop&amp;w=800" alt="Network" data-is-external-image="true"></p>
+            ]]>
+        </content>
+    </entry>
+    <entry>
+        <title>JavaScript căn bản cho Web</title>
+        <author>
+            <name>Thiều Quang Duy</name>
+        </author>
+        <link href="https://quangduy05.github.io/my_blog/javascript-can-ban-cho-web.html"/>
+        <id>https://quangduy05.github.io/my_blog/javascript-can-ban-cho-web.html</id>
+            <category term="JavaScript"/>
+
+        <updated>2025-12-29T19:02:28+07:00</updated>
+            <summary type="html">
+                <![CDATA[
+                    Sức mạnh của JavaScript Nếu HTML là khung xương, CSS là quần áo thì JS chính là bộ não giúp&hellip;
+                ]]>
+            </summary>
+        <content type="html">
+            <![CDATA[
+                <h2 style="color: #333;">Sức mạnh của JavaScript</h2>
+<p style="line-height: 1.6;">Nếu HTML là khung xương, CSS là quần áo thì JS chính là bộ não giúp website cử động. Trong đồ án này, JS giúp các nút bấm trên Menu hoạt động mượt mà hơn.</p>
+<p style="text-align: center;"><img loading="lazy" style="border-radius: 8px; max-width: 100%;" src="https://images.unsplash.com/photo-1579468118864-1b9ea3c0db4a?auto=format&amp;fit=crop&amp;w=800" alt="JS logo" data-is-external-image="true"></p>
+            ]]>
+        </content>
+    </entry>
+    <entry>
+        <title>Kết nối Cơ sở dữ liệu (JDBC)</title>
+        <author>
+            <name>Thiều Quang Duy</name>
+        </author>
+        <link href="https://quangduy05.github.io/my_blog/ket-noi-co-so-du-lieu-jdbc.html"/>
+        <id>https://quangduy05.github.io/my_blog/ket-noi-co-so-du-lieu-jdbc.html</id>
+            <category term="Java"/>
+
+        <updated>2025-12-29T19:01:58+07:00</updated>
+            <summary type="html">
+                <![CDATA[
+                    Nền tảng của một Data Engineer Việc lấy dữ liệu từ Database là kỹ năng tối quan trọng. JDBC (Java&hellip;
+                ]]>
+            </summary>
+        <content type="html">
+            <![CDATA[
+                <h2 style="color: #333;">Nền tảng của một Data Engineer</h2>
+<p style="line-height: 1.6;">Việc lấy dữ liệu từ Database là kỹ năng tối quan trọng. JDBC (Java Database Connectivity) là cầu nối giúp ứng dụng Java nói chuyện với SQL Server hoặc MySQL.</p>
+<p style="text-align: center;"><img loading="lazy" style="border-radius: 8px; max-width: 100%;" src="https://images.unsplash.com/photo-1544383835-bda2bc66a55d?auto=format&amp;fit=crop&amp;w=800" alt="Database" data-is-external-image="true"></p>
+<p>Ní cần chuẩn bị Driver JDBC và chuỗi kết nối (Connection String) để bắt đầu truy vấn dữ liệu.</p>
+            ]]>
+        </content>
+    </entry>
+    <entry>
+        <title>Xử lý Đa luồng (Multi-threading) trong Java</title>
+        <author>
+            <name>Thiều Quang Duy</name>
+        </author>
+        <link href="https://quangduy05.github.io/my_blog/xu-ly-da-luong-multi-threading-trong-java.html"/>
+        <id>https://quangduy05.github.io/my_blog/xu-ly-da-luong-multi-threading-trong-java.html</id>
+            <category term="Java"/>
+
+        <updated>2025-12-29T19:01:23+07:00</updated>
+            <summary type="html">
+                <![CDATA[
+                    Tại sao cần Đa luồng trong quản lý bãi xe? Hãy tưởng tượng bãi giữ xe của bạn có hàng&hellip;
+                ]]>
+            </summary>
+        <content type="html">
+            <![CDATA[
+                <h2 style="color: #333;">Tại sao cần Đa luồng trong quản lý bãi xe?</h2>
+<p style="line-height: 1.6;">Hãy tưởng tượng bãi giữ xe của bạn có hàng trăm xe ra vào cùng lúc. Nếu chỉ xử lý đơn luồng, xe này phải đợi xe kia thanh toán xong mới được vào. Đa luồng (Multi-threading) cho phép hệ thống xử lý nhiều yêu cầu đồng thời, giúp camera nhận diện biển số và máy in vé hoạt động cùng lúc.</p>
+<p style="text-align: center;"><img loading="lazy" style="border-radius: 8px; max-width: 100%;" src="https://images.unsplash.com/photo-1506521781263-d8422e82f27a?auto=format&amp;fit=crop&amp;w=800" alt="Parking system" data-is-external-image="true"></p>
+<h3 style="color: #444;">Ví dụ code mô phỏng luồng xe:</h3>
+<pre style="background: #f4f4f4; padding: 15px; border-radius: 5px;"><code>class ParkingGate extends Thread {
+    private String gateName;
+    public ParkingGate(String name) { this.gateName = name; }
+    public void run() {
+        System.out.println(gateName + " đang xử lý xe...");
+    }
+}</code></pre>
+            ]]>
+        </content>
+    </entry>
+    <entry>
+        <title>Lập trình mạng với Java Socket: Xây dựng ứng dụng Chat đơn giản</title>
+        <author>
+            <name>Thiều Quang Duy</name>
+        </author>
+        <link href="https://quangduy05.github.io/my_blog/lap-trinh-mang-voi-java-socket-xay-dung-ung-dung-chat-don-gian.html"/>
+        <id>https://quangduy05.github.io/my_blog/lap-trinh-mang-voi-java-socket-xay-dung-ung-dung-chat-don-gian.html</id>
+            <category term="Java"/>
+
+        <updated>2025-12-29T18:59:49+07:00</updated>
+            <summary type="html">
+                <![CDATA[
+                    Giới thiệu về Java Socket và Lập trình mạng Lập trình mạng là một trong những kiến thức cốt lõi&hellip;
+                ]]>
+            </summary>
+        <content type="html">
+            <![CDATA[
+                <h2 style="font-size: 1.8rem; margin-top: 25px; margin-bottom: 15px; color: #333;">Giới thiệu về Java Socket và Lập trình mạng</h2>
+<p style="line-height: 1.6; font-size: 1.1rem; color: #555;">Lập trình mạng là một trong những kiến thức cốt lõi cho các kỹ sư phần mềm, đặc biệt là khi xây dựng các ứng dụng phân tán. Trong Java, Socket là một API mạnh mẽ giúp chúng ta thiết lập kết nối và truyền dữ liệu qua mạng một cách dễ dàng. Bài viết này sẽ hướng dẫn bạn cách tạo một ứng dụng chat đơn giản sử dụng Java Socket.</p>
+<h3 style="font-size: 1.5rem; margin-top: 20px; margin-bottom: 10px; color: #444;">Socket là gì?</h3>
+<p style="line-height: 1.6; font-size: 1.1rem; color: #555;">Socket là một endpoint của một liên kết truyền thông hai chiều giữa hai chương trình chạy trên mạng. Về cơ bản, nó là một "điểm cuối" cho phép các ứng dụng gửi và nhận dữ liệu qua một kết nối mạng.</p>
+<p style="text-align: center; margin: 30px 0;"><img loading="lazy" style="max-width: 100%; height: auto; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);" src="https://i.imgur.com/k93vB4Q.png" alt="Sơ đồ Java Socket Client-Server" data-is-external-image="true"> <em style="display: block; margin-top: 10px; font-size: 0.9rem; color: #777;">Mô hình Client-Server sử dụng Java Socket</em></p>
+<h3 style="font-size: 1.5rem; margin-top: 20px; margin-bottom: 10px; color: #444;">Các bước xây dựng ứng dụng Chat</h3>
+<h4 style="font-size: 1.3rem; margin-top: 15px; margin-bottom: 8px; color: #555;">1. Server-side (Máy chủ)</h4>
+<p style="line-height: 1.6; font-size: 1.1rem; color: #555;">Máy chủ sẽ lắng nghe các kết nối đến từ phía Client. Khi có Client kết nối, Server sẽ tạo một Socket mới để giao tiếp với Client đó.</p>
+<pre style="background-color: #f4f4f4; padding: 15px; border-radius: 8px; overflow-x: auto; font-size: 0.95rem;"><code><span style="color: #0000ff;">import</span> java.io.*;
+<span style="color: #0000ff;">import</span> java.net.*;
+
+<span style="color: #0000ff;">public class</span> ChatServer {
+    <span style="color: #0000ff;">public static void</span> main(<span style="color: #0000ff;">String</span>[] args) <span style="color: #0000ff;">throws</span> IOException {
+        <span style="color: #0000ff;">int</span> port = 12345;
+        ServerSocket serverSocket = <span style="color: #0000ff;">new</span> ServerSocket(port);
+        System.out.println(<span style="color: #a31515;">"Server đang lắng nghe trên cổng "</span> + port);
+
+        <span style="color: #0000ff;">while</span> (<span style="color: #0000ff;">true</span>) {
+            Socket clientSocket = serverSocket.accept();
+            System.out.println(<span style="color: #a31515;">"Client mới đã kết nối: "</span> + clientSocket);
+
+            <span style="color: #0000ff;">new</span> ServerThread(clientSocket).start();
+        }
+    }
+}
+
+<span style="color: #0000ff;">class</span> ServerThread <span style="color: #0000ff;">extends</span> Thread {
+    <span style="color: #0000ff;">private</span> Socket clientSocket;
+    <span style="color: #0000ff;">private</span> PrintWriter out;
+    <span style="color: #0000ff;">private</span> BufferedReader in;
+
+    <span style="color: #0000ff;">public</span> ServerThread(Socket socket) {
+        <span style="color: #0000ff;">this</span>.clientSocket = socket;
+    }
+
+    <span style="color: #0000ff;">public void</span> run() {
+        <span style="color: #0000ff;">try</span> {
+            out = <span style="color: #0000ff;">new</span> PrintWriter(clientSocket.getOutputStream(), <span style="color: #0000ff;">true</span>);
+            in = <span style="color: #0000ff;">new</span> BufferedReader(<span style="color: #0000ff;">new</span> InputStreamReader(clientSocket.getInputStream()));
+
+            String inputLine;
+            <span style="color: #0000ff;">while</span> ((inputLine = in.readLine()) != <span style="color: #0000ff;">null</span>) {
+                System.out.println(<span style="color: #a31515;">"Client "</span> + clientSocket.getPort() + <span style="color: #a31515;">": "</span> + inputLine);
+                out.println(<span style="color: #a31515;">"Server nhận được: "</span> + inputLine);
+            }
+
+            in.close();
+            out.close();
+            clientSocket.close();
+        } <span style="color: #0000ff;">catch</span> (IOException e) {
+            System.out.println(<span style="color: #a31515;">"Lỗi: "</span> + e.getMessage());
+        }
+    }
+}</code></pre>
+<h4 style="font-size: 1.3rem; margin-top: 15px; margin-bottom: 8px; color: #555;">2. Client-side (Máy khách)</h4>
+<p style="line-height: 1.6; font-size: 1.1rem; color: #555;">Phía Client sẽ tạo một Socket để kết nối đến địa chỉ IP và cổng của Server. Sau đó, Client có thể gửi và nhận tin nhắn.</p>
+<pre style="background-color: #f4f4f4; padding: 15px; border-radius: 8px; overflow-x: auto; font-size: 0.95rem;"><code><span style="color: #0000ff;">import</span> java.io.*;
+<span style="color: #0000ff;">import</span> java.net.*;
+<span style="color: #0000ff;">import</span> java.util.Scanner;
+
+<span style="color: #0000ff;">public class</span> ChatClient {
+    <span style="color: #0000ff;">public static void</span> main(<span style="color: #0000ff;">String</span>[] args) <span style="color: #0000ff;">throws</span> IOException {
+        <span style="color: #0000ff;">String</span> hostName = <span style="color: #a31515;">"localhost"</span>;
+        <span style="color: #0000ff;">int</span> port = 12345;
+
+        <span style="color: #0000ff;">try</span> (Socket socket = <span style="color: #0000ff;">new</span> Socket(hostName, port);
+             PrintWriter out = <span style="color: #0000ff;">new</span> PrintWriter(socket.getOutputStream(), <span style="color: #0000ff;">true</span>);
+             BufferedReader in = <span style="color: #0000ff;">new</span> BufferedReader(<span style="color: #0000ff;">new</span> InputStreamReader(socket.getInputStream()));
+             Scanner scanner = <span style="color: #0000ff;">new</span> Scanner(System.in)) {
+
+            System.out.println(<span style="color: #a31515;">"Đã kết nối tới Server. Nhập tin nhắn của bạn:"</span>);
+            String userInput;
+            <span style="color: #0000ff;">while</span> (<span style="color: #0000ff;">(userInput = scanner.nextLine())</span> != <span style="color: #0000ff;">null</span>) {
+                out.println(userInput);
+                System.out.println(<span style="color: #a31515;">"Server phản hồi: "</span> + in.readLine());
+                <span style="color: #0000ff;">if</span> (userInput.equals(<span style="color: #a31515;">"bye"</span>)) <span style="color: #0000ff;">break</span>;
+            }
+
+        } <span style="color: #0000ff;">catch</span> (UnknownHostException e) {
+            System.err.println(<span style="color: #a31515;">"Không biết host "</span> + hostName);
+            System.exit(1);
+        } <span style="color: #0000ff;">catch</span> (IOException e) {
+            System.err.println(<span style="color: #a31515;">"Không thể lấy I/O cho kết nối tới "</span> + hostName);
+            System.exit(1);
+        }
+    }
+}</code></pre>
+<h2 style="font-size: 1.8rem; margin-top: 25px; margin-bottom: 15px; color: #333;">Kết luận</h2>
+<p style="line-height: 1.6; font-size: 1.1rem; color: #555;">Với Java Socket, chúng ta có thể dễ dàng xây dựng các ứng dụng mạng cơ bản đến phức tạp. Hiểu rõ cách hoạt động của Socket là chìa khóa để phát triển các hệ thống phân tán mạnh mẽ và hiệu quả. Hy vọng qua bài viết này, bạn đã có cái nhìn tổng quan và có thể tự tay xây dựng ứng dụng chat đầu tiên của mình!</p>
+            ]]>
+        </content>
+    </entry>
 </feed>
