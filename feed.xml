@@ -21,7 +21,7 @@
         <updated>2025-12-29T19:14:52+07:00</updated>
             <summary type="html">
                 <![CDATA[
-                    Lời kết và Kỹ thuật Async/Await trong JavaScript Để khép lại hành trình xây dựng blog này, chúng ta cùng&hellip;
+                    Lời kết và Kỹ thuật Async/Await trong JavaScript Để khép lại hành trình xây dựng blog này, chúng ta cùng nhìn qua cách JavaScript xử lý các tác vụ mạng một cách mượt mà thông qua Async/Await. Đây là cách giúp website của Duy tải&hellip;
                 ]]>
             </summary>
         <content type="html">
@@ -58,7 +58,7 @@
         <updated>2025-12-29T19:14:03+07:00</updated>
             <summary type="html">
                 <![CDATA[
-                    Xử lý đồng bộ trong Hệ thống quản lý bãi xe Trong bãi giữ xe, nếu hai camera cùng nhận&hellip;
+                    Xử lý đồng bộ trong Hệ thống quản lý bãi xe Trong bãi giữ xe, nếu hai camera cùng nhận diện hai xe vào một lúc và cùng cập nhật số chỗ trống, sẽ xảy ra lỗi Race Condition. Điều này khiến số lượng chỗ&hellip;
                 ]]>
             </summary>
         <content type="html">
@@ -102,7 +102,7 @@
         <updated>2025-12-29T19:07:51+07:00</updated>
             <summary type="html">
                 <![CDATA[
-                    Bảo mật kết nối Socket với SSL/TLS Khi xây dựng ứng dụng Chat hay hệ thống quản lý bãi xe,&hellip;
+                    Bảo mật kết nối Socket với SSL/TLS Khi xây dựng ứng dụng Chat hay hệ thống quản lý bãi xe, dữ liệu cá nhân của người dùng cần được bảo vệ. Việc gửi dữ liệu qua Socket thông thường (Plaintext) có thể bị hacker đánh&hellip;
                 ]]>
             </summary>
         <content type="html">
@@ -147,7 +147,7 @@
         <updated>2025-12-29T19:06:19+07:00</updated>
             <summary type="html">
                 <![CDATA[
-                    Xử lý dữ liệu lớn (Big Data) trong Java Trong vai trò Data Engineer, việc đọc các file dữ liệu&hellip;
+                    Xử lý dữ liệu lớn (Big Data) trong Java Trong vai trò Data Engineer, việc đọc các file dữ liệu hàng trăm MB hay hàng GB là chuyện thường ngày. Nếu sử dụng các phương pháp đọc file thông thường, hệ thống sẽ rất dễ&hellip;
                 ]]>
             </summary>
         <content type="html">
@@ -197,7 +197,7 @@
         <updated>2025-12-29T19:03:27+07:00</updated>
             <summary type="html">
                 <![CDATA[
-                    Điều khiển Website theo ý muốn DOM (Document Object Model) cho phép ní thay đổi màu sắc, nội dung trang&hellip;
+                    Điều khiển Website theo ý muốn DOM (Document Object Model) cho phép ní thay đổi màu sắc, nội dung trang web mà không cần tải lại trang. Đây là bí mật của các website hiện đại. document.getElementById("btn").innerHTML = "Đã nhấn!";
                 ]]>
             </summary>
         <content type="html">
@@ -220,7 +220,7 @@
         <updated>2025-12-29T19:02:58+07:00</updated>
             <summary type="html">
                 <![CDATA[
-                    Nên chọn TCP hay UDP? TCP đảm bảo dữ liệu đến đích chính xác (như gửi email), còn UDP ưu&hellip;
+                    Nên chọn TCP hay UDP? TCP đảm bảo dữ liệu đến đích chính xác (như gửi email), còn UDP ưu tiên tốc độ (như livestream). Trong Java, Socket thường dùng TCP để đảm bảo tin nhắn chat không bị mất.
                 ]]>
             </summary>
         <content type="html">
@@ -243,7 +243,7 @@
         <updated>2025-12-29T19:02:28+07:00</updated>
             <summary type="html">
                 <![CDATA[
-                    Sức mạnh của JavaScript Nếu HTML là khung xương, CSS là quần áo thì JS chính là bộ não giúp&hellip;
+                    Sức mạnh của JavaScript Nếu HTML là khung xương, CSS là quần áo thì JS chính là bộ não giúp website cử động. Trong đồ án này, JS giúp các nút bấm trên Menu hoạt động mượt mà hơn.
                 ]]>
             </summary>
         <content type="html">
@@ -266,7 +266,7 @@
         <updated>2025-12-29T19:01:58+07:00</updated>
             <summary type="html">
                 <![CDATA[
-                    Nền tảng của một Data Engineer Việc lấy dữ liệu từ Database là kỹ năng tối quan trọng. JDBC (Java&hellip;
+                    Nền tảng của một Data Engineer Việc lấy dữ liệu từ Database là kỹ năng tối quan trọng. JDBC (Java Database Connectivity) là cầu nối giúp ứng dụng Java nói chuyện với SQL Server hoặc MySQL. Ní cần chuẩn bị Driver JDBC và chuỗi kết&hellip;
                 ]]>
             </summary>
         <content type="html">
@@ -290,7 +290,7 @@
         <updated>2025-12-29T19:01:23+07:00</updated>
             <summary type="html">
                 <![CDATA[
-                    Tại sao cần Đa luồng trong quản lý bãi xe? Hãy tưởng tượng bãi giữ xe của bạn có hàng&hellip;
+                    Tại sao cần Đa luồng trong quản lý bãi xe? Hãy tưởng tượng bãi giữ xe của bạn có hàng trăm xe ra vào cùng lúc. Nếu chỉ xử lý đơn luồng, xe này phải đợi xe kia thanh toán xong mới được vào. Đa&hellip;
                 ]]>
             </summary>
         <content type="html">
@@ -321,7 +321,7 @@
         <updated>2025-12-29T18:59:49+07:00</updated>
             <summary type="html">
                 <![CDATA[
-                    Giới thiệu về Java Socket và Lập trình mạng Lập trình mạng là một trong những kiến thức cốt lõi&hellip;
+                    Giới thiệu về Java Socket và Lập trình mạng Lập trình mạng là một trong những kiến thức cốt lõi cho các kỹ sư phần mềm, đặc biệt là khi xây dựng các ứng dụng phân tán. Trong Java, Socket là một API mạnh mẽ&hellip;
                 ]]>
             </summary>
         <content type="html">
